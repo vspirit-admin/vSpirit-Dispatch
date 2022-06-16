@@ -2,52 +2,40 @@ import { schedule } from 'node-cron'
 import axios from 'axios'
 
 import getArrivalInfo from './getArrivalInfo'
-import { hoppieString } from './hoppie'
+import { hoppieParse, hoppieString, HoppieType } from './hoppie'
 
-export default () => {
+const cron = () => {
   // Auto Send Arrival Info
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
     console.log('Looking For Aircraft Approaching TOD')
 
-    const pendingMessages = ((await axios.get(hoppieString())).data as string)
-      .replace(/^ok {/, '')
-      .replace(/}}$/, '}')
-      .split('} {')
+    const pendingMessages = (await axios.get(hoppieString())).data as string
+    const pendingEtaMessages = hoppieParse(pendingMessages).filter(
+      ({ type, message }) =>
+        type === HoppieType.progress && message.includes('ETA/')
+    )
 
-    const data: string[][] = []
-    for (const request of pendingMessages) {
-      if (request.includes('progress') && request.includes('ETA/')) {
-        const formattedData = request
-          .replace('{', '')
-          .replace('}', '')
-          .split(' ')
-          .filter((data) => data.length > 0)
-
-        data.push(formattedData)
-      }
-    }
-
-    if (data.length === 0) {
+    if (pendingEtaMessages.length === 0) {
       return console.log('No Aircraft Approaching TOD')
     }
 
-    return data.map(async (report) => {
+    return pendingEtaMessages.map(async ({ from, message }) => {
+      const [dep, arr] = message.split('/')
       const flightInfo = {
-        callsign: report[0],
-        dep: report[2].split('/')[0],
-        arr: report[2].split('/')[1],
+        callsign: from,
+        dep,
+        arr,
       }
       const arrivalInfo = getArrivalInfo(flightInfo)
       arrivalInfo.push(process.env.FOOTER ?? '')
 
       return await axios.post(
-        hoppieString(
-          'telex',
-          arrivalInfo.join('\n').toUpperCase()
-        )
+        hoppieString(HoppieType.telex, arrivalInfo.join('\n').toUpperCase())
       )
     })
   })
 }
+
+export default cron

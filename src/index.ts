@@ -66,12 +66,12 @@ app.get('/dispatch/:flightFile', (req, res) => {
     }
   }
 
-    if (process.env.FOOTER_LN1) text.push('')
-    if (process.env.FOOTER_LN1) text.push(process.env.FOOTER_LN1)
-    if (process.env.FOOTER_LN2) text.push(process.env.FOOTER_LN2)
-    if (process.env.FOOTER_LN3) text.push(process.env.FOOTER_LN3)
-    if (process.env.FOOTER_LN4) text.push(process.env.FOOTER_LN4)
-    if (process.env.FOOTER_LN5) text.push(process.env.FOOTER_LN5)
+  if (process.env.FOOTER_LN1) text.push('')
+  if (process.env.FOOTER_LN1) text.push(process.env.FOOTER_LN1)
+  if (process.env.FOOTER_LN2) text.push(process.env.FOOTER_LN2)
+  if (process.env.FOOTER_LN3) text.push(process.env.FOOTER_LN3)
+  if (process.env.FOOTER_LN4) text.push(process.env.FOOTER_LN4)
+  if (process.env.FOOTER_LN5) text.push(process.env.FOOTER_LN5)
 
   fs.writeFileSync(filePath, text.join('\n').toUpperCase())
   res.status(200).sendFile(filePath)
