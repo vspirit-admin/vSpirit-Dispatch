@@ -1,11 +1,96 @@
 import { schedule } from 'node-cron'
 import axios from 'axios'
+import NodeCache from 'node-cache'
 
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieParse, hoppieString, HoppieType } from './hoppie'
 
-const cron = () => {
-  // Auto Send Arrival Info
+const vAmsysMapUri =
+  'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d'
+
+interface VaAirportInfo {
+  name: string
+  icao: string
+  iata: string
+  latitude: string
+  longitude: string
+}
+
+interface VaFlightInfo {
+  id: number
+  callsign: string
+  'flight-number': string
+  pax: number
+  cargo: number
+  route: string
+  network: string
+  currentLocation: {
+    altitude: number
+    heading: number
+    latitude: string
+    longitude: string
+    groundspeed: number
+    distance_remaining: number
+    distance_flown: number
+    departure_time: string
+    estimated_arrival_time: string
+    time_flown: string
+  }
+  aircraft: {
+    registration: string
+    name: string
+    code: string
+    codename: string
+  }
+  arrival: VaAirportInfo
+  departure: VaAirportInfo
+  pilot: {
+    username: string
+  }
+}
+
+const arrInfoSentCache = new NodeCache({ stdTTL: 3600 }) // 1 hour TTL
+
+const flightArrivingSoon = ({ currentLocation }: VaFlightInfo) =>
+  currentLocation.groundspeed >= 250 &&
+  currentLocation.distance_remaining <= 225
+
+// Auto send arrival info per vAMSYS info
+export const cron2 = () => {
+  // TODO: replace with scheduler that supports async such as Bree
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  schedule('* * * * *', async () => {
+    console.log('Checking for aircraft on vAMSYS')
+    const res = await axios.get(vAmsysMapUri)
+    const data = res.data as VaFlightInfo[]
+    return Promise.all(
+      data.map(async (flight) => {
+        if (
+          !arrInfoSentCache.get(flight.callsign) &&
+          flightArrivingSoon(flight)
+        ) {
+          const arrivalInfo = getArrivalInfo({
+            arr: flight.arrival.icao,
+            dep: flight.arrival.icao,
+            callsign: flight.callsign,
+          })
+          console.log('Sending arrival info to', flight.callsign)
+          await axios.post(
+            hoppieString(
+              HoppieType.telex,
+              arrivalInfo.join('\n'),
+              flight.callsign
+            )
+          )
+          arrInfoSentCache.set(flight.callsign, true)
+        }
+      })
+    )
+  })
+}
+
+// Auto send arrival info per hoppie
+export const cron = () => {
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
@@ -23,28 +108,29 @@ const cron = () => {
 
     console.log('ETAs found:', pendingEtaMessages)
 
-    return pendingEtaMessages.map(async ({ from, message }) => {
-      const [, dep, arr] = [...message.matchAll(/^(\w{4})\/(\w{4})/g)][0]
-      const flightInfo = {
-        callsign: from,
-        dep,
-        arr,
-      }
+    return pendingEtaMessages
+      .filter(({ from: callsign }) => !arrInfoSentCache.get(callsign))
+      .map(async ({ from, message }) => {
+        const [, dep, arr] = [...message.matchAll(/^(\w{4})\/(\w{4})/g)][0]
+        const flightInfo = {
+          callsign: from,
+          dep,
+          arr,
+        }
 
-      const arrivalInfo = getArrivalInfo(flightInfo)
-      if (process.env.FOOTER) {
-        arrivalInfo.push(process.env.FOOTER)
-      }
+        const arrivalInfo = getArrivalInfo(flightInfo)
+        if (process.env.FOOTER) {
+          arrivalInfo.push(process.env.FOOTER)
+        }
 
-      const hString = hoppieString(
-        HoppieType.telex,
-        arrivalInfo.join('\n').toUpperCase(),
-        flightInfo.callsign
-      )
-      console.log('Sending telex:', hString)
-      return await axios.post(hString)
-    })
+        const hString = hoppieString(
+          HoppieType.telex,
+          arrivalInfo.join('\n').toUpperCase(),
+          flightInfo.callsign
+        )
+        console.log('Sending telex:', hString)
+        await axios.post(hString)
+        return
+      })
   })
 }
-
-export default cron

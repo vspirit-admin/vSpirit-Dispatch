@@ -12,9 +12,10 @@ if (
   throw new Error('Missing environment variables')
 }
 
-import cron from './cron'
+import { cron, cron2 } from './cron'
 
-cron()
+// cron()
+cron2()
 
 const port = process.env.PORT ?? 3000
 
@@ -37,9 +38,10 @@ app.get('/dispatch/:flightFile', (req, res) => {
   const [flight, requestType] = flightFile.split('.')
 
   if (flightFile.split('.').length !== 2) {
-    return res.status(400).json({
+    res.status(400).json({
       message: 'Bad Request, file must be a valid file',
     })
+    return
   }
 
   const flightInfo = routes.find((route) => route.callsign === flight)
