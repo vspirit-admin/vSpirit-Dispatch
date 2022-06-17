@@ -60,30 +60,33 @@ export const cron2 = () => {
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
-    console.log('Checking for aircraft on vAMSYS')
+    console.log('Checking for arrival aircraft on vAMSYS')
     const res = await axios.get(vAmsysMapUri)
     const data = res.data as VaFlightInfo[]
     return Promise.all(
       data.map(async (flight) => {
         if (
-          !arrInfoSentCache.get(flight.callsign) &&
-          flightArrivingSoon(flight)
+          !flightArrivingSoon(flight) ||
+          arrInfoSentCache.get(flight.callsign)
         ) {
-          const arrivalInfo = getArrivalInfo({
-            arr: flight.arrival.icao,
-            dep: flight.arrival.icao,
-            callsign: flight.callsign,
-          })
-          console.log('Sending arrival info to', flight.callsign)
-          await axios.post(
-            hoppieString(
-              HoppieType.telex,
-              arrivalInfo.join('\n'),
-              flight.callsign
-            )
-          )
-          arrInfoSentCache.set(flight.callsign, true)
+          console.log('No flights found')
+          return
         }
+
+        const arrivalInfo = getArrivalInfo({
+          arr: flight.arrival.icao,
+          dep: flight.arrival.icao,
+          callsign: flight.callsign,
+        })
+        console.log('Sending arrival info to', flight.callsign)
+        await axios.post(
+          hoppieString(
+            HoppieType.telex,
+            arrivalInfo.join('\n'),
+            flight.callsign
+          )
+        )
+        arrInfoSentCache.set(flight.callsign, true)
       })
     )
   })
