@@ -1,3 +1,6 @@
+import _ from 'lodash'
+
+import { arrGatesAssigned } from './caches'
 import gates from './data/gates'
 
 interface Gate {
@@ -8,38 +11,63 @@ interface Gate {
 
 /**
  * Retrieves a valid gate for the given airport and international status
- * @param airport 4 Letter ICAO airport code
- * @param international If the flight is international or not
+ *
+ * @param icao 4-letter ICAO airport code
+ * @param international Whether the flight is international and not domestic
  * @returns Gate object or null if not found
  */
-const getGate = (airport: string, international: boolean): Gate | null => {
-  if (airport.length !== 4) {
+const getGate = (icao: string, international: boolean): Gate | null => {
+  if (icao.length !== 4) {
     throw new Error('Invalid airport code')
   }
 
-  let possibleGates: Gate[] = gates.filter(
-    (gate) => gate.icao === airport && gate.international === international
+  const assignedGates: string[] = arrGatesAssigned.get(icao) ?? []
+  const airportGates: Gate[] = gates.filter((gate) => gate.icao === icao)
+
+  if (airportGates.length === 0) {
+    return null
+  }
+
+  const possibleGatesByInternational = airportGates.filter(
+    (gate) => gate.international === international
+  )
+  const possibleGatesByAlreadyAssigned = airportGates.filter(
+    (gate) => !assignedGates.includes(gate.gate_number)
+  )
+
+  let possibleGates = _.unionBy(
+    possibleGatesByInternational,
+    possibleGatesByAlreadyAssigned,
+    'gate_number'
   )
 
   if (possibleGates.length === 0) {
-    possibleGates = gates.filter((gate) => gate.icao === airport)
-
-    if (possibleGates.length === 0) {
-      return null
-    }
+    possibleGates = airportGates
   }
 
-  return possibleGates[Math.floor(Math.random() * possibleGates.length)] ?? null
+  const chosenGate =
+    possibleGates[Math.floor(Math.random() * possibleGates.length)]
+  assignedGates.push(chosenGate.gate_number)
+
+  arrGatesAssigned.set(icao, assignedGates)
+  console.log(`Assigning gate ${chosenGate.gate_number} at ${icao}.`)
+
+  return chosenGate
 }
 
+/**
+ * Generates an arrival message string from the given flight info.
+ *
+ * @param flightInfo
+ */
 const getArrivalInfo = (flightInfo: {
   arr: string
   dep: string
   callsign: string
-}): string[] => {
+}): string => {
   const gate = getGate(
     flightInfo.arr,
-    !flightInfo.dep.toUpperCase().startsWith('K')
+    !flightInfo.dep.startsWith(flightInfo.arr[0])
   )
 
   // const arrivalWeather = await axios.get(`https://avwx.rest/api/metar/${flightInfo.arr}?`, {
@@ -48,13 +76,16 @@ const getArrivalInfo = (flightInfo: {
   //     }
   // })
 
+  const callsignFormatted = flightInfo.callsign.replace(/\D/g, '')
+  const gateNumber = gate?.gate_number
+
   const arrivalInfo = [
     `***AUTOMATED UPLINK***`,
     `GATE ASSIGNMENT FOR`,
-    `FLIGHT ${flightInfo.callsign}`,
-    `ARRIVING ${flightInfo.arr} IS ${gate?.gate_number ?? 'UNKN'}`,
-    `GROUND POWER: YES`,
-    `GROUND AIR: YES`,
+    `FLIGHT ${callsignFormatted}`,
+    `ARRIVING ${flightInfo.arr} IS ${gateNumber ?? 'UNKNOWN'}`,
+    `GROUND POWER: ${gateNumber ? 'YES' : 'UNKNOWN'}`,
+    `GROUND AIR: ${gateNumber ? 'YES' : 'UNKNOWN'}`,
     `OPS FREQ: NONE`,
     `MESSAGE: KEEP APU`,
     `SHUTDOWN WHEN ABLE`,
@@ -64,7 +95,7 @@ const getArrivalInfo = (flightInfo: {
     arrivalInfo.push(process.env.FOOTER)
   }
 
-  return arrivalInfo
+  return arrivalInfo.join('\n').toUpperCase()
 }
 
 export default getArrivalInfo
