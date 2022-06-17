@@ -41,7 +41,7 @@ const cron = () => {
         arrivalInfo.join('\n').toUpperCase(),
         flightInfo.callsign
       )
-      console.log('Sending telex:', hString)
+      console.log(`Sending telex to ${flightInfo.callsign}:`, arrivalInfo)
       return await axios.post(hString)
     })
   })

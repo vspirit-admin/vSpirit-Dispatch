@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "npm run build && node .",
-    "lint": "npx eslint"
+    "lint": "eslint"
   },
   "author": "GoldenXLence",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "express": "^4.18.1",
     "node-cron": "^3.0.1",
     "qs": "^6.10.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "typescript": "^4.7.3"
   },
   "devDependencies": {
     "@types/express": "4.17.13",
@@ -33,8 +34,7 @@
     "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "ts-node": "^10.8.1"
   },
   "prettier": {
     "semi": false,
