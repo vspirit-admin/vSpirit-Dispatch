@@ -48,7 +48,7 @@ const getArrivalInfo = (flightInfo: {
   //     }
   // })
 
-  return [
+  const arrivalInfo = [
     `***AUTOMATED UPLINK***`,
     `GATE ASSIGNMENT FOR`,
     `FLIGHT ${flightInfo.callsign}`,
@@ -59,6 +59,12 @@ const getArrivalInfo = (flightInfo: {
     `MESSAGE: KEEP APU`,
     `SHUTDOWN WHEN ABLE`,
   ]
+
+  if (process.env.FOOTER) {
+    arrivalInfo.push(process.env.FOOTER)
+  }
+
+  return arrivalInfo
 }
 
 export default getArrivalInfo

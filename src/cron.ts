@@ -61,18 +61,18 @@ export const cron2 = () => {
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
     console.log('Checking for arrival aircraft on vAMSYS')
-    const res = await axios.get(vAmsysMapUri)
-    const data = res.data as VaFlightInfo[]
-    return Promise.all(
-      data.map(async (flight) => {
-        if (
-          !flightArrivingSoon(flight) ||
-          arrInfoSentCache.get(flight.callsign)
-        ) {
-          console.log('No flights found')
-          return
-        }
+    const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
+    const flights = data.filter(
+      (flight) =>
+        flightArrivingSoon(flight) && arrInfoSentCache.get(flight.callsign)
+    )
+    console.log(
+      `${data.length} flights found, ${flights.length} eligible arriving flights found.`
+    )
 
+    return Promise.all(
+      flights.map(async (flight) => {
+        arrInfoSentCache.set(flight.callsign, true)
         const arrivalInfo = getArrivalInfo({
           arr: flight.arrival.icao,
           dep: flight.arrival.icao,
@@ -86,7 +86,6 @@ export const cron2 = () => {
             flight.callsign
           )
         )
-        arrInfoSentCache.set(flight.callsign, true)
       })
     )
   })
@@ -113,19 +112,16 @@ export const cron = () => {
 
     return pendingEtaMessages
       .filter(({ from: callsign }) => !arrInfoSentCache.get(callsign))
-      .map(async ({ from, message }) => {
+      .map(async ({ from: callsign, message }) => {
+        arrInfoSentCache.set(callsign, true)
         const [, dep, arr] = [...message.matchAll(/^(\w{4})\/(\w{4})/g)][0]
         const flightInfo = {
-          callsign: from,
+          callsign,
           dep,
           arr,
         }
 
         const arrivalInfo = getArrivalInfo(flightInfo)
-        if (process.env.FOOTER) {
-          arrivalInfo.push(process.env.FOOTER)
-        }
-
         const hString = hoppieString(
           HoppieType.telex,
           arrivalInfo.join('\n').toUpperCase(),
