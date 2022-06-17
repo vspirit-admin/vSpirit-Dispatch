@@ -41,14 +41,20 @@ const getGate = (icao: string, international: boolean): Gate | null => {
     'gate_number'
   )
 
+  // I hate this so much.
   if (possibleGates.length === 0) {
-    possibleGates = airportGates
+    possibleGates =
+      possibleGatesByAlreadyAssigned.length > 0
+        ? possibleGatesByAlreadyAssigned
+        : possibleGatesByInternational.length > 0
+        ? possibleGatesByInternational
+        : airportGates
   }
 
   const chosenGate =
     possibleGates[Math.floor(Math.random() * possibleGates.length)]
-  assignedGates.push(chosenGate.gate_number)
 
+  assignedGates.push(chosenGate.gate_number)
   arrGatesAssigned.set(icao, assignedGates)
   console.log(`Assigning gate ${chosenGate.gate_number} at ${icao}.`)
 

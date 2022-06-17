@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-import gates from './data/gates'
-import routes from './data/routes'
+import gates from '../data/gates'
+import routes from '../data/routes'
 
 // Poorly-written script for finding airports we're missing the gate info for.
 
