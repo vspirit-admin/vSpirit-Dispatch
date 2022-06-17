@@ -21,19 +21,28 @@ const cron = () => {
       return console.log('No Aircraft Approaching TOD')
     }
 
+    console.log('ETAs found:', pendingEtaMessages)
+
     return pendingEtaMessages.map(async ({ from, message }) => {
-      const [dep, arr] = message.split('/')
+      const [, dep, arr] = [...message.matchAll(/^(\w{4})\/(\w{4})/g)][0]
       const flightInfo = {
         callsign: from,
         dep,
         arr,
       }
-      const arrivalInfo = getArrivalInfo(flightInfo)
-      arrivalInfo.push(process.env.FOOTER ?? '')
 
-      return await axios.post(
-        hoppieString(HoppieType.telex, arrivalInfo.join('\n').toUpperCase())
+      const arrivalInfo = getArrivalInfo(flightInfo)
+      if (process.env.FOOTER) {
+        arrivalInfo.push(process.env.FOOTER)
+      }
+
+      const hString = hoppieString(
+        HoppieType.telex,
+        arrivalInfo.join('\n').toUpperCase(),
+        flightInfo.callsign
       )
+      console.log('Sending telex:', hString)
+      return await axios.post(hString)
     })
   })
 }

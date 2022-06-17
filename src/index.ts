@@ -1,15 +1,11 @@
 import express from 'express'
-import fs from 'fs'
-import path from 'path'
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
 import routes from './data/routes'
 import getArrivalInfo from './getArrivalInfo'
 
-dotenv.config()
-
 if (
-  !process.env.AVWX_TOKEN ||
+  // !process.env.AVWX_TOKEN ||
   !process.env.HOPPIE_LOGON ||
   !process.env.CALLSIGN
 ) {
@@ -37,17 +33,15 @@ app.get('/dispatch/', (req, res) => {
 })
 
 app.get('/dispatch/:flightFile', (req, res) => {
-  const flightFile = String(req.params.flightFile).toUpperCase().split('.')
+  const flightFile = req.params.flightFile.toUpperCase()
+  const [flight, requestType] = flightFile.split('.')
 
-  if (flightFile.length !== 2) {
+  if (flightFile.split('.').length !== 2) {
     return res.status(400).json({
       message: 'Bad Request, file must be a valid file',
     })
   }
 
-  const flight = flightFile[0]
-  const requestType = flightFile[1]
-  const filePath = path.join(__dirname, './files/', flightFile.join('.'))
   const flightInfo = routes.find((route) => route.callsign === flight)
 
   const text: string[] = []
@@ -66,15 +60,11 @@ app.get('/dispatch/:flightFile', (req, res) => {
     }
   }
 
-  if (process.env.FOOTER_LN1) text.push('')
-  if (process.env.FOOTER_LN1) text.push(process.env.FOOTER_LN1)
-  if (process.env.FOOTER_LN2) text.push(process.env.FOOTER_LN2)
-  if (process.env.FOOTER_LN3) text.push(process.env.FOOTER_LN3)
-  if (process.env.FOOTER_LN4) text.push(process.env.FOOTER_LN4)
-  if (process.env.FOOTER_LN5) text.push(process.env.FOOTER_LN5)
+  if (process.env.FOOTER) {
+    text.push(process.env.FOOTER)
+  }
 
-  fs.writeFileSync(filePath, text.join('\n').toUpperCase())
-  res.status(200).sendFile(filePath)
+  res.attachment(flightFile).status(200).send(text.join('\n').toUpperCase())
 })
 
 app.all('*', (req, res) => {

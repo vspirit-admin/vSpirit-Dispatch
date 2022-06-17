@@ -36,7 +36,7 @@ const getArrivalInfo = (flightInfo: {
   arr: string
   dep: string
   callsign: string
-}) => {
+}): string[] => {
   const gate = getGate(
     flightInfo.arr,
     !flightInfo.dep.toUpperCase().startsWith('K')
@@ -55,7 +55,7 @@ const getArrivalInfo = (flightInfo: {
     `ARRIVING ${flightInfo.arr} IS ${gate?.gate_number ?? 'UNKN'}`,
     `GROUND POWER: YES`,
     `GROUND AIR: YES`,
-    `OPS FREQ: UNKN`,
+    `OPS FREQ: NONE`,
     `MESSAGE: KEEP APU`,
     `SHUTDOWN WHEN ABLE`,
   ]

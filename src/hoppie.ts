@@ -20,10 +20,12 @@ interface HoppieMessage {
  *
  * @param type By default 'poll', otherwise one of HoppieType.
  * @param packet Leave undefined for no packet/message, otherwise any string. Any special characters will be encoded.
+ * @param to
  */
 export const hoppieString = (
   type = HoppieType.poll,
-  packet: string | undefined = undefined
+  packet: string | undefined = undefined,
+  to: string | undefined = undefined
 ) => {
   const CALLSIGN = process.env.CALLSIGN
   const HOPPIE_LOGON = process.env.HOPPIE_LOGON
@@ -35,7 +37,7 @@ export const hoppieString = (
   const query = qs.stringify({
     logon: HOPPIE_LOGON,
     from: CALLSIGN,
-    to: CALLSIGN,
+    to: to ?? CALLSIGN,
     type,
     packet,
   })
