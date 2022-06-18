@@ -25,6 +25,7 @@ const getGate = (icao: string, international: boolean): Gate | null => {
   const airportGates: Gate[] = gates.filter((gate) => gate.icao === icao)
 
   if (airportGates.length === 0) {
+    console.log(`No gate found at ${icao}.`)
     return null
   }
 
@@ -41,7 +42,7 @@ const getGate = (icao: string, international: boolean): Gate | null => {
     'gate_number'
   )
 
-  // I hate this so much.
+  // If there is no union, prioritize stand availability over international gates.
   if (possibleGates.length === 0) {
     possibleGates =
       possibleGatesByAlreadyAssigned.length > 0

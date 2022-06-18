@@ -51,7 +51,7 @@ interface VaFlightInfo {
 
 const flightArrivingSoon = ({ currentLocation }: VaFlightInfo) =>
   currentLocation.distance_remaining <= 225 &&
-  currentLocation.groundspeed >= 250
+  currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
 
 // Auto send arrival info per vAMSYS info
 export const cron2 = () => {
@@ -80,11 +80,7 @@ export const cron2 = () => {
         })
         console.log(`Sending arrival info to ${flight.callsign}.`)
         await axios.post(
-          hoppieString(
-            HoppieType.telex,
-            arrivalInfo,
-            flight.callsign
-          )
+          hoppieString(HoppieType.telex, arrivalInfo, flight.callsign)
         )
       })
     )
