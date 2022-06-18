@@ -10,7 +10,7 @@ const getArrivalInfo = (flightInfo: {
   dep: string
   callsign: string
 }): string => {
-  const gate = getGate(
+  const gateNumber = getGate(
     flightInfo.arr,
     !flightInfo.dep.startsWith(flightInfo.arr[0])
   )
@@ -22,7 +22,6 @@ const getArrivalInfo = (flightInfo: {
   // })
 
   const callsignFormatted = flightInfo.callsign.replace(/\D/g, '')
-  const gateNumber = gate?.gate_number
 
   const arrivalInfo = [
     `***AUTOMATED UPLINK***`,

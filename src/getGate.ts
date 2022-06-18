@@ -1,7 +1,10 @@
 import _ from 'lodash'
+import { Logger } from 'tslog'
 
 import { arrGatesAssigned } from './caches'
 import gates from './data/gates'
+
+const gateLogger = new Logger({ name: 'gateLogger' })
 
 interface Gate {
   icao: string
@@ -16,16 +19,17 @@ interface Gate {
  * @param international Whether the flight is international and not domestic
  * @returns Gate object or null if not found
  */
-const getGate = (icao: string, international: boolean): Gate | null => {
+const getGate = (icao: string, international: boolean): string | null => {
   if (icao.length !== 4) {
-    throw new Error('Invalid airport code')
+    gateLogger.error('Invalid ICAO:', icao)
+    return null
   }
 
-  const assignedGates: string[] = arrGatesAssigned.get(icao) ?? []
+  const assignedGateNumbers: string[] = arrGatesAssigned.get(icao) ?? []
   const airportGates: Gate[] = gates.filter((gate) => gate.icao === icao)
 
   if (airportGates.length === 0) {
-    console.log(`No gate found at ${icao}.`)
+    gateLogger.warn(`No gate found at ${icao}.`)
     return null
   }
 
@@ -33,7 +37,7 @@ const getGate = (icao: string, international: boolean): Gate | null => {
     (gate) => gate.international === international
   )
   const possibleGatesByAlreadyAssigned = airportGates.filter(
-    (gate) => !assignedGates.includes(gate.gate_number)
+    (gate) => !assignedGateNumbers.includes(gate.gate_number)
   )
 
   let possibleGates = _.unionBy(
@@ -52,14 +56,14 @@ const getGate = (icao: string, international: boolean): Gate | null => {
         : airportGates
   }
 
-  const chosenGate =
-    possibleGates[Math.floor(Math.random() * possibleGates.length)]
+  const chosenGateNumber =
+    possibleGates[Math.floor(Math.random() * possibleGates.length)].gate_number
 
-  assignedGates.push(chosenGate.gate_number)
-  arrGatesAssigned.set(icao, assignedGates)
-  console.log(`Assigning gate ${chosenGate.gate_number} at ${icao}.`)
+  assignedGateNumbers.push(chosenGateNumber)
+  arrGatesAssigned.set(icao, assignedGateNumbers)
+  gateLogger.info(`Assigning gate ${chosenGateNumber} at ${icao}.`)
 
-  return chosenGate
+  return chosenGateNumber
 }
 
 export default getGate

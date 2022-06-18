@@ -1,9 +1,12 @@
 import { schedule } from 'node-cron'
 import axios from 'axios'
+import { Logger } from 'tslog'
 
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieParse, hoppieString, HoppieType } from './hoppie'
 import { arrInfoSentCache } from './caches'
+
+const cronLogger = new Logger({ name: 'cronLogger' })
 
 const vAmsysMapUri =
   'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d'
@@ -58,15 +61,14 @@ export const cron2 = () => {
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
-    console.log(new Date())
-    console.log('Checking for arrival aircraft on vAMSYS...')
+    cronLogger.info('Checking for arrival aircraft on vAMSYS...')
     const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
     const flights = data.filter(
       (flight) =>
         flightArrivingSoon(flight) && !arrInfoSentCache.get(flight.callsign)
     )
 
-    console.log(
+    cronLogger.info(
       `${data.length} flights found, ${flights.length} eligible arriving flights found.`
     )
 
@@ -78,7 +80,7 @@ export const cron2 = () => {
           dep: flight.departure.icao,
           callsign: flight.callsign,
         })
-        console.log(`Sending arrival info to ${flight.callsign}.`)
+        cronLogger.info(`Sending arrival info to ${flight.callsign}.`)
         await axios.post(
           hoppieString(HoppieType.telex, arrivalInfo, flight.callsign)
         )
@@ -92,7 +94,7 @@ export const cron = () => {
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
-    console.log('Looking For Aircraft Approaching TOD')
+    cronLogger.info('Looking For Aircraft Approaching TOD')
 
     const pendingMessages = (await axios.get(hoppieString())).data as string
     const pendingEtaMessages = hoppieParse(pendingMessages).filter(
@@ -101,10 +103,11 @@ export const cron = () => {
     )
 
     if (pendingEtaMessages.length === 0) {
-      return console.log('No Aircraft Approaching TOD')
+      cronLogger.info('No aircraft approaching TOD')
+      return
     }
 
-    console.log('ETAs found:', pendingEtaMessages)
+    cronLogger.info('ETAs found:', pendingEtaMessages)
 
     return pendingEtaMessages
       .filter(({ from: callsign }) => !arrInfoSentCache.get(callsign))
@@ -123,7 +126,7 @@ export const cron = () => {
           arrivalInfo,
           flightInfo.callsign
         )
-        console.log(`Sending telex to ${flightInfo.callsign}.`)
+        cronLogger.info(`Sending telex to ${flightInfo.callsign}.`)
         await axios.post(hString)
         return
       })
