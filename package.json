@@ -13,6 +13,10 @@
   },
   "author": "GoldenXLence",
   "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoldenXLence/AutoDispatch.git"
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "csv-parser": "^3.0.0",
