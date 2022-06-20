@@ -52,7 +52,7 @@ interface VaFlightInfo {
   }
 }
 
-const flightArrivingSoon = ({ currentLocation }: VaFlightInfo) =>
+const flightShouldReceiveMessage = ({ currentLocation }: VaFlightInfo) =>
   currentLocation.distance_remaining <= 225 &&
   currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
 
@@ -65,7 +65,8 @@ export const cron2 = () => {
     const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
     const flights = data.filter(
       (flight) =>
-        flightArrivingSoon(flight) && !arrInfoSentCache.get(flight.callsign)
+        flightShouldReceiveMessage(flight) &&
+        !arrInfoSentCache.get(flight.callsign)
     )
 
     cronLogger.info(
@@ -75,14 +76,22 @@ export const cron2 = () => {
     return Promise.all(
       flights.map(async (flight) => {
         arrInfoSentCache.set(flight.callsign, true)
-        const arrivalInfo = getArrivalInfo({
+        const arrivalMessage = getArrivalInfo({
           arr: flight.arrival.icao,
           dep: flight.departure.icao,
           callsign: flight.callsign,
         })
+
+        if (process.env.DEV_MODE) {
+          cronLogger.debug(
+            `Dev mode enabled, arrival string:\n${arrivalMessage}`
+          )
+          return
+        }
+
         cronLogger.info(`Sending arrival info to ${flight.callsign}.`)
         await axios.post(
-          hoppieString(HoppieType.telex, arrivalInfo, flight.callsign)
+          hoppieString(HoppieType.telex, arrivalMessage, flight.callsign)
         )
       })
     )
