@@ -1,5 +1,5 @@
 {
-  "name": "vspirit-dispatch",
+  "name": "autodispatch",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
     "update": "npm-check -u"
   },
   "author": "GoldenXLence",
-  "license": "ISC",
+  "license": "AGPL-3.0",
   "dependencies": {
     "axios": "^0.27.2",
     "csv-parser": "^3.0.0",

@@ -1,4 +1,4 @@
-# vSpirit-Dispatch
+# Hoppie AutoDispatch
 
 [ACARS](https://en.wikipedia.org/wiki/ACARS) messaging client for vSpirit dispatching services. Learn more about us
 at [vSpirit.io](https://www.vspirit.io/).
