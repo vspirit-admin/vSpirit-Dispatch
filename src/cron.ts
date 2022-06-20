@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Logger } from 'tslog'
 
 import getArrivalInfo from './getArrivalInfo'
-import { hoppieParse, hoppieString, HoppieType } from './hoppie'
+import { hoppieString, HoppieType } from './hoppie'
 import { arrInfoSentCache } from './caches'
 
 const cronLogger = new Logger({ name: 'cronLogger' })
@@ -57,7 +57,7 @@ const flightShouldReceiveMessage = ({ currentLocation }: VaFlightInfo) =>
   currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
 
 // Auto send arrival info per vAMSYS info
-export const cron2 = () => {
+export const cron = () => {
   // TODO: replace with scheduler that supports async such as Bree
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   schedule('* * * * *', async () => {
@@ -95,49 +95,5 @@ export const cron2 = () => {
         )
       })
     )
-  })
-}
-
-// Auto send arrival info per hoppie
-export const cron = () => {
-  // TODO: replace with scheduler that supports async such as Bree
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
-  schedule('* * * * *', async () => {
-    cronLogger.info('Looking For Aircraft Approaching TOD')
-
-    const pendingMessages = (await axios.get(hoppieString())).data as string
-    const pendingEtaMessages = hoppieParse(pendingMessages).filter(
-      ({ type, message }) =>
-        type === HoppieType.progress && message.includes('ETA/')
-    )
-
-    if (pendingEtaMessages.length === 0) {
-      cronLogger.info('No aircraft approaching TOD')
-      return
-    }
-
-    cronLogger.info('ETAs found:', pendingEtaMessages)
-
-    return pendingEtaMessages
-      .filter(({ from: callsign }) => !arrInfoSentCache.get(callsign))
-      .map(async ({ from: callsign, message }) => {
-        arrInfoSentCache.set(callsign, true)
-        const [, dep, arr] = [...message.matchAll(/^(\w{4})\/(\w{4})/g)][0]
-        const flightInfo = {
-          callsign,
-          dep,
-          arr,
-        }
-
-        const arrivalInfo = getArrivalInfo(flightInfo)
-        const hString = hoppieString(
-          HoppieType.telex,
-          arrivalInfo,
-          flightInfo.callsign
-        )
-        cronLogger.info(`Sending telex to ${flightInfo.callsign}.`)
-        await axios.post(hString)
-        return
-      })
   })
 }

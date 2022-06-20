@@ -20,7 +20,7 @@ interface HoppieMessage {
  *
  * @param type By default 'poll', otherwise one of HoppieType.
  * @param packet Leave undefined for no packet/message, otherwise any string. Any special characters will be encoded.
- * @param to
+ * @param to Destination of the request, or self if not given.
  */
 export const hoppieString = (
   type = HoppieType.poll,
@@ -45,8 +45,10 @@ export const hoppieString = (
   return `${HOPPIE_URL}${query}`
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Parses an input string from a hoppie response and returns it as an array of HoppieMessage.
+ * Currently unused but keeping for possible future use.
  *
  * @param input
  */
