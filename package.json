@@ -1,5 +1,5 @@
 {
-  "name": "autodispatch",
+  "name": "vspirit-dispatch",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -12,10 +12,13 @@
     "update": "npm-check -u"
   },
   "author": "GoldenXLence",
+  "maintainers": [
+    "Ryan Breaker"
+  ],
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GoldenXLence/AutoDispatch.git"
+    "url": "https://github.com/vspirit-admin/vSpirit-Dispatch.git"
   },
   "dependencies": {
     "axios": "^0.27.2",
