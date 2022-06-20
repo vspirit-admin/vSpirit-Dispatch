@@ -82,7 +82,7 @@ export const cron = () => {
           callsign: flight.callsign,
         })
 
-        if (process.env.DEV_MODE) {
+        if (process.env.DEV_MODE === 'true') {
           cronLogger.debug(
             `Dev mode enabled, arrival string:\n${arrivalMessage}`
           )
