@@ -20,8 +20,11 @@
     "type": "git",
     "url": "https://github.com/vspirit-admin/vSpirit-Dispatch.git"
   },
+  "engines": {
+    "node": "^16.15"
+  },
   "dependencies": {
-    "@isaacs/ttlcache": "github:RyanBreaker/ttlcache#patch-1",
+    "@isaacs/ttlcache": "^1.0.5",
     "axios": "^0.27.2",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.1",
