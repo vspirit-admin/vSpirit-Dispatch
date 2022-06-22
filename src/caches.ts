@@ -1,4 +1,6 @@
-import NodeCache from 'node-cache'
+import TTLCache from '@isaacs/ttlcache'
 
-export const arrInfoSentCache = new NodeCache({ stdTTL: 3600 }) // 1 hour TTL
-export const arrGatesAssigned = new NodeCache({ stdTTL: 3600 })
+const ms = (hours: number) => Math.floor(hours * 60 * 60 * 1000)
+
+export const arrInfoSentCache = new TTLCache<string, boolean>({ ttl: ms(1) })
+export const arrGatesAssigned = new TTLCache<string, boolean>({ ttl: ms(1) })

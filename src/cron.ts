@@ -63,18 +63,18 @@ export const cron = () => {
   schedule('* * * * *', async () => {
     cronLogger.info('Checking for arrival aircraft on vAMSYS...')
     const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
-    const flights = data.filter(
+    const flightsToReceiveMessage = data.filter(
       (flight) =>
         flightShouldReceiveMessage(flight) &&
         !arrInfoSentCache.get(flight.callsign)
     )
 
     cronLogger.info(
-      `${data.length} flights found, ${flights.length} eligible arriving flights found.`
+      `${data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
     )
 
     return Promise.all(
-      flights.map(async (flight) => {
+      flightsToReceiveMessage.map(async (flight) => {
         arrInfoSentCache.set(flight.callsign, true)
         const arrivalMessage = getArrivalInfo({
           arr: flight.arrival.icao,
@@ -82,7 +82,7 @@ export const cron = () => {
           callsign: flight.callsign,
         })
 
-        if (process.env.DEV_MODE === 'true') {
+        if (process.env.DEV_MODE?.toLowerCase() === 'true') {
           cronLogger.debug(
             `Dev mode enabled, arrival string:\n${arrivalMessage}`
           )

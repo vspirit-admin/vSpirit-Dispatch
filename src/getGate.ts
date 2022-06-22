@@ -25,8 +25,12 @@ const getGate = (icao: string, international: boolean): string | null => {
     return null
   }
 
-  const assignedGateNumbers: string[] = arrGatesAssigned.get(icao) ?? []
   const airportGates: Gate[] = gates.filter((gate) => gate.icao === icao)
+  const gateNumbersAlreadyAssigned = airportGates
+    .filter(({ gate_number }) =>
+      arrGatesAssigned.get(`${icao}/${gate_number}`.toUpperCase())
+    )
+    .map(({ gate_number }) => gate_number)
 
   if (airportGates.length === 0) {
     gateLogger.warn(`No gate found at ${icao}.`)
@@ -37,12 +41,12 @@ const getGate = (icao: string, international: boolean): string | null => {
     (gate) => gate.international === international
   )
   const possibleGatesByAlreadyAssigned = airportGates.filter(
-    (gate) => !assignedGateNumbers.includes(gate.gate_number)
+    (gate) => !gateNumbersAlreadyAssigned.includes(gate.gate_number)
   )
 
   let possibleGates = _.unionBy(
-    possibleGatesByInternational,
     possibleGatesByAlreadyAssigned,
+    possibleGatesByInternational,
     'gate_number'
   )
 
@@ -59,8 +63,7 @@ const getGate = (icao: string, international: boolean): string | null => {
   const chosenGateNumber =
     possibleGates[Math.floor(Math.random() * possibleGates.length)].gate_number
 
-  assignedGateNumbers.push(chosenGateNumber)
-  arrGatesAssigned.set(icao, assignedGateNumbers)
+  arrGatesAssigned.set(`${icao}/${chosenGateNumber}`.toUpperCase(), true)
   gateLogger.info(`Assigning gate ${chosenGateNumber} at ${icao}.`)
 
   return chosenGateNumber
