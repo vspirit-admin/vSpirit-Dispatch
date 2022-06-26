@@ -1,7 +1,8 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    ".eslintrc.js"
   ],
   "compilerOptions": {
     "outDir": "./dist",
