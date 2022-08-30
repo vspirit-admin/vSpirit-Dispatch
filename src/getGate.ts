@@ -60,15 +60,19 @@ const getGate = (station: Station, international: boolean): Gate | null => {
   }
 
   const chosenGate =
-    possibleGates[Math.floor(Math.random() * possibleGates.length)]
+    possibleGates[Math.floor(Math.random() * possibleGates.length)] as Gate | undefined
 
-  arrGatesAssigned.set(
-    `${station.icao}/${chosenGate.gateNumber}`.toUpperCase(),
-    true
-  )
-  gateLogger.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
+  if (chosenGate) {
+    arrGatesAssigned.set(
+      `${station.icao}/${chosenGate.gateNumber}`.toUpperCase(),
+      true
+    )
+    gateLogger.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
+  } else {
+    gateLogger.info(`No gates found for ${station.icao}.`)
+  }
 
-  return chosenGate
+  return chosenGate ?? null
 }
 
 export default getGate
