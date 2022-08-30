@@ -1,0 +1,2205 @@
+[
+  {
+    "icao": "KABQ",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "A7",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KACY",
+    "isAcars": true,
+    "opsFreq": "130.550",
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "5",
+        "isIntl": false
+      },
+      {
+        "gate": "6",
+        "isIntl": false
+      },
+      {
+        "gate": "7",
+        "isIntl": false
+      },
+      {
+        "gate": "8",
+        "isIntl": false
+      },
+      {
+        "gate": "9",
+        "isIntl": false
+      },
+      {
+        "gate": "10",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KATL",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gate": "D2",
+        "isIntl": false
+      },
+      {
+        "gate": "D4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KAUS",
+    "isAcars": true,
+    "opsFreq": "129.050",
+    "gates": [
+      {
+        "gate": "3",
+        "isIntl": false
+      },
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "5",
+        "isIntl": false
+      },
+      {
+        "gate": "6",
+        "isIntl": false
+      },
+      {
+        "gate": "11",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KAVL",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gate": "2",
+        "isIntl": false
+      },
+      {
+        "gate": "6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBDL",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "A26",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBNA",
+    "isAcars": true,
+    "opsFreq": "130.000",
+    "gates": [
+      {
+        "gate": "A1",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBOI",
+    "isAcars": true,
+    "opsFreq": "131.575",
+    "gates": [
+      {
+        "gate": "B19",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBOS",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "B37",
+        "isIntl": false
+      },
+      {
+        "gate": "B38",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBUR",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "B2",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KBWI",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gate": "D8",
+        "isIntl": false
+      },
+      {
+        "gate": "D10",
+        "isIntl": false
+      },
+      {
+        "gate": "D11",
+        "isIntl": false
+      },
+      {
+        "gate": "D12",
+        "isIntl": false
+      },
+      {
+        "gate": "D14",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KCAK",
+    "isAcars": true,
+    "opsFreq": "130.725",
+    "gates": [
+      {
+        "gate": "5",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KCLE",
+    "isAcars": true,
+    "opsFreq": "131.425",
+    "gates": [
+      {
+        "gate": "A2",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KCLT",
+    "isAcars": true,
+    "opsFreq": "131.275",
+    "gates": [
+      {
+        "gate": "A29",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KCMH",
+    "isAcars": true,
+    "opsFreq": "130.925",
+    "gates": [
+      {
+        "gate": "B35",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KCRW",
+    "isAcars": true,
+    "opsFreq": "122.950",
+    "gates": [
+      {
+        "gate": "B2",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KDEN",
+    "isAcars": true,
+    "opsFreq": "131.050",
+    "gates": [
+      {
+        "gate": "C48",
+        "isIntl": false
+      },
+      {
+        "gate": "C50",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KDFW",
+    "isAcars": true,
+    "opsFreq": "131.150",
+    "gates": [
+      {
+        "gate": "E2",
+        "isIntl": false
+      },
+      {
+        "gate": "E4",
+        "isIntl": false
+      },
+      {
+        "gate": "E5",
+        "isIntl": false
+      },
+      {
+        "gate": "E6",
+        "isIntl": false
+      },
+      {
+        "gate": "E7",
+        "isIntl": false
+      },
+      {
+        "gate": "E8",
+        "isIntl": false
+      },
+      {
+        "gate": "E9",
+        "isIntl": false
+      },
+      {
+        "gate": "E10",
+        "isIntl": false
+      },
+      {
+        "gate": "E11",
+        "isIntl": false
+      },
+      {
+        "gate": "E12",
+        "isIntl": false
+      },
+      {
+        "gate": "E13",
+        "isIntl": false
+      },
+      {
+        "gate": "E14",
+        "isIntl": false
+      },
+      {
+        "gate": "E15",
+        "isIntl": false
+      },
+      {
+        "gate": "E16",
+        "isIntl": false
+      },
+      {
+        "gate": "E17",
+        "isIntl": false
+      },
+      {
+        "gate": "E18",
+        "isIntl": false
+      },
+      {
+        "gate": "E19",
+        "isIntl": false
+      },
+      {
+        "gate": "E20",
+        "isIntl": false
+      },
+      {
+        "gate": "E21",
+        "isIntl": false
+      },
+      {
+        "gate": "E22",
+        "isIntl": false
+      },
+      {
+        "gate": "E23",
+        "isIntl": false
+      },
+      {
+        "gate": "E24",
+        "isIntl": false
+      },
+      {
+        "gate": "E25",
+        "isIntl": false
+      },
+      {
+        "gate": "E26",
+        "isIntl": false
+      },
+      {
+        "gate": "E27",
+        "isIntl": false
+      },
+      {
+        "gate": "E28",
+        "isIntl": false
+      },
+      {
+        "gate": "E29",
+        "isIntl": false
+      },
+      {
+        "gate": "E30",
+        "isIntl": false
+      },
+      {
+        "gate": "E31",
+        "isIntl": false
+      },
+      {
+        "gate": "E32",
+        "isIntl": false
+      },
+      {
+        "gate": "E33",
+        "isIntl": false
+      },
+      {
+        "gate": "E34",
+        "isIntl": false
+      },
+      {
+        "gate": "E35",
+        "isIntl": false
+      },
+      {
+        "gate": "E36",
+        "isIntl": false
+      },
+      {
+        "gate": "E37",
+        "isIntl": false
+      },
+      {
+        "gate": "E38",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KDTW",
+    "isAcars": true,
+    "opsFreq": "130.320",
+    "gates": [
+      {
+        "gate": "D1",
+        "isIntl": false
+      },
+      {
+        "gate": "D2",
+        "isIntl": false
+      },
+      {
+        "gate": "D3",
+        "isIntl": true
+      },
+      {
+        "gate": "D4",
+        "isIntl": false
+      },
+      {
+        "gate": "D5",
+        "isIntl": false
+      },
+      {
+        "gate": "D6",
+        "isIntl": false
+      },
+      {
+        "gate": "D8",
+        "isIntl": false
+      },
+      {
+        "gate": "D9",
+        "isIntl": true
+      },
+      {
+        "gate": "D10",
+        "isIntl": true
+      },
+      {
+        "gate": "D11",
+        "isIntl": false
+      },
+      {
+        "gate": "D12",
+        "isIntl": false
+      },
+      {
+        "gate": "D14",
+        "isIntl": false
+      },
+      {
+        "gate": "D15",
+        "isIntl": false
+      },
+      {
+        "gate": "D16",
+        "isIntl": false
+      },
+      {
+        "gate": "D17",
+        "isIntl": false
+      },
+      {
+        "gate": "D18",
+        "isIntl": false
+      },
+      {
+        "gate": "D19",
+        "isIntl": false
+      },
+      {
+        "gate": "D20",
+        "isIntl": false
+      },
+      {
+        "gate": "D21",
+        "isIntl": false
+      },
+      {
+        "gate": "D23",
+        "isIntl": false
+      },
+      {
+        "gate": "D24",
+        "isIntl": false
+      },
+      {
+        "gate": "D25",
+        "isIntl": false
+      },
+      {
+        "gate": "D26",
+        "isIntl": false
+      },
+      {
+        "gate": "D27",
+        "isIntl": false
+      },
+      {
+        "gate": "D28",
+        "isIntl": false
+      },
+      {
+        "gate": "D29",
+        "isIntl": false
+      },
+      {
+        "gate": "D30",
+        "isIntl": false
+      },
+      {
+        "gate": "D31",
+        "isIntl": false
+      },
+      {
+        "gate": "D32",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KEWR",
+    "isAcars": true,
+    "opsFreq": "130.625",
+    "gates": [
+      {
+        "gate": "51",
+        "isIntl": false
+      },
+      {
+        "gate": "52",
+        "isIntl": false
+      },
+      {
+        "gate": "53",
+        "isIntl": false
+      },
+      {
+        "gate": "54",
+        "isIntl": false
+      },
+      {
+        "gate": "55",
+        "isIntl": false
+      },
+      {
+        "gate": "56",
+        "isIntl": false
+      },
+      {
+        "gate": "57",
+        "isIntl": false
+      },
+      {
+        "gate": "60",
+        "isIntl": false
+      },
+      {
+        "gate": "61",
+        "isIntl": false
+      },
+      {
+        "gate": "62",
+        "isIntl": false
+      },
+      {
+        "gate": "63",
+        "isIntl": false
+      },
+      {
+        "gate": "65",
+        "isIntl": false
+      },
+      {
+        "gate": "66",
+        "isIntl": false
+      },
+      {
+        "gate": "67",
+        "isIntl": false
+      },
+      {
+        "gate": "68",
+        "isIntl": false
+      },
+      {
+        "gate": "40",
+        "isIntl": false
+      },
+      {
+        "gate": "41A",
+        "isIntl": false
+      },
+      {
+        "gate": "41B",
+        "isIntl": false
+      },
+      {
+        "gate": "42",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KFLL",
+    "isAcars": true,
+    "opsFreq": "130.120",
+    "gates": [
+      {
+        "gate": "E9",
+        "isIntl": false
+      },
+      {
+        "gate": "F2",
+        "isIntl": false
+      },
+      {
+        "gate": "F4",
+        "isIntl": false
+      },
+      {
+        "gate": "F6",
+        "isIntl": false
+      },
+      {
+        "gate": "F8",
+        "isIntl": false
+      },
+      {
+        "gate": "G1",
+        "isIntl": true
+      },
+      {
+        "gate": "G10",
+        "isIntl": true
+      },
+      {
+        "gate": "G11",
+        "isIntl": true
+      },
+      {
+        "gate": "G12",
+        "isIntl": true
+      },
+      {
+        "gate": "G13",
+        "isIntl": true
+      },
+      {
+        "gate": "G14",
+        "isIntl": true
+      },
+      {
+        "gate": "G2",
+        "isIntl": true
+      },
+      {
+        "gate": "G3",
+        "isIntl": true
+      },
+      {
+        "gate": "G4",
+        "isIntl": true
+      },
+      {
+        "gate": "G5",
+        "isIntl": true
+      },
+      {
+        "gate": "G6",
+        "isIntl": true
+      },
+      {
+        "gate": "G7",
+        "isIntl": true
+      },
+      {
+        "gate": "G8",
+        "isIntl": true
+      },
+      {
+        "gate": "G9",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KIAG",
+    "isAcars": false,
+    "opsFreq": "122.950",
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KIAH",
+    "isAcars": true,
+    "opsFreq": "130.950",
+    "gates": [
+      {
+        "gate": "A17",
+        "isIntl": false
+      },
+      {
+        "gate": "A18",
+        "isIntl": false
+      },
+      {
+        "gate": "A19",
+        "isIntl": false
+      },
+      {
+        "gate": "A24",
+        "isIntl": false
+      },
+      {
+        "gate": "D1",
+        "isIntl": true
+      },
+      {
+        "gate": "D2",
+        "isIntl": true
+      },
+      {
+        "gate": "D3",
+        "isIntl": true
+      },
+      {
+        "gate": "D4",
+        "isIntl": true
+      },
+      {
+        "gate": "D5",
+        "isIntl": true
+      },
+      {
+        "gate": "D6",
+        "isIntl": true
+      },
+      {
+        "gate": "D7",
+        "isIntl": true
+      },
+      {
+        "gate": "D8",
+        "isIntl": true
+      },
+      {
+        "gate": "D9",
+        "isIntl": true
+      },
+      {
+        "gate": "D10",
+        "isIntl": true
+      },
+      {
+        "gate": "D11",
+        "isIntl": true
+      },
+      {
+        "gate": "D12",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KIND",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "A20",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KLAS",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "A10",
+        "isIntl": false
+      },
+      {
+        "gate": "A11",
+        "isIntl": false
+      },
+      {
+        "gate": "A12",
+        "isIntl": false
+      },
+      {
+        "gate": "A14",
+        "isIntl": false
+      },
+      {
+        "gate": "A5",
+        "isIntl": false
+      },
+      {
+        "gate": "A7",
+        "isIntl": false
+      },
+      {
+        "gate": "A8",
+        "isIntl": false
+      },
+      {
+        "gate": "B19",
+        "isIntl": false
+      },
+      {
+        "gate": "B20",
+        "isIntl": false
+      },
+      {
+        "gate": "B21",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KLAX",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "50",
+        "isIntl": false
+      },
+      {
+        "gate": "56A",
+        "isIntl": false
+      },
+      {
+        "gate": "51A",
+        "isIntl": false
+      },
+      {
+        "gate": "54A",
+        "isIntl": false
+      },
+      {
+        "gate": "54B",
+        "isIntl": false
+      },
+      {
+        "gate": "57",
+        "isIntl": false
+      },
+      {
+        "gate": "58",
+        "isIntl": false
+      },
+      {
+        "gate": "59",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KLBE",
+    "isAcars": true,
+    "opsFreq": "122.950",
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": false
+      },
+      {
+        "gate": "2",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KLGA",
+    "isAcars": true,
+    "opsFreq": "130.170",
+    "gates": [
+      {
+        "gate": "A3",
+        "isIntl": false
+      },
+      {
+        "gate": "A4",
+        "isIntl": false
+      },
+      {
+        "gate": "A5",
+        "isIntl": false
+      },
+      {
+        "gate": "A6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMCI",
+    "isAcars": true,
+    "opsFreq": "129.825",
+    "gates": [
+      {
+        "gate": "77",
+        "isIntl": false
+      },
+      {
+        "gate": "79",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMCO",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": true
+      },
+      {
+        "gate": "2",
+        "isIntl": true
+      },
+      {
+        "gate": "3",
+        "isIntl": true
+      },
+      {
+        "gate": "4",
+        "isIntl": true
+      },
+      {
+        "gate": "5",
+        "isIntl": true
+      },
+      {
+        "gate": "6",
+        "isIntl": true
+      },
+      {
+        "gate": "7",
+        "isIntl": true
+      },
+      {
+        "gate": "8",
+        "isIntl": true
+      },
+      {
+        "gate": "9",
+        "isIntl": true
+      },
+      {
+        "gate": "10",
+        "isIntl": true
+      },
+      {
+        "gate": "11",
+        "isIntl": true
+      },
+      {
+        "gate": "12",
+        "isIntl": true
+      },
+      {
+        "gate": "13",
+        "isIntl": true
+      },
+      {
+        "gate": "14",
+        "isIntl": true
+      },
+      {
+        "gate": "15",
+        "isIntl": true
+      },
+      {
+        "gate": "16",
+        "isIntl": true
+      },
+      {
+        "gate": "17",
+        "isIntl": true
+      },
+      {
+        "gate": "18",
+        "isIntl": true
+      },
+      {
+        "gate": "19",
+        "isIntl": true
+      },
+      {
+        "gate": "20",
+        "isIntl": true
+      },
+      {
+        "gate": "21",
+        "isIntl": true
+      },
+      {
+        "gate": "22",
+        "isIntl": true
+      },
+      {
+        "gate": "23",
+        "isIntl": true
+      },
+      {
+        "gate": "24",
+        "isIntl": true
+      },
+      {
+        "gate": "25",
+        "isIntl": true
+      },
+      {
+        "gate": "26",
+        "isIntl": true
+      },
+      {
+        "gate": "27",
+        "isIntl": true
+      },
+      {
+        "gate": "28",
+        "isIntl": true
+      },
+      {
+        "gate": "30",
+        "isIntl": false
+      },
+      {
+        "gate": "31",
+        "isIntl": false
+      },
+      {
+        "gate": "32",
+        "isIntl": false
+      },
+      {
+        "gate": "33",
+        "isIntl": false
+      },
+      {
+        "gate": "34",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMHT",
+    "isAcars": true,
+    "opsFreq": "129.600",
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KMIA",
+    "isAcars": true,
+    "opsFreq": "129.600",
+    "gates": [
+      {
+        "gate": "G8",
+        "isIntl": false
+      },
+      {
+        "gate": "G10",
+        "isIntl": false
+      },
+      {
+        "gate": "G12",
+        "isIntl": false
+      },
+      {
+        "gate": "G14",
+        "isIntl": false
+      },
+      {
+        "gate": "J4",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KMKE",
+    "isAcars": true,
+    "opsFreq": "131.750",
+    "gates": [
+      {
+        "gate": "D43",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMEM",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMSP",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "A2",
+        "isIntl": true
+      },
+      {
+        "gate": "E2",
+        "isIntl": false
+      },
+      {
+        "gate": "E4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMSY",
+    "isAcars": true,
+    "opsFreq": "130.750",
+    "gates": [
+      {
+        "gate": "C12",
+        "isIntl": false
+      },
+      {
+        "gate": "C14",
+        "isIntl": false
+      },
+      {
+        "gate": "C15",
+        "isIntl": false
+      },
+      {
+        "gate": "C16",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KMYR",
+    "isAcars": true,
+    "opsFreq": "131.270",
+    "gates": [
+      {
+        "gate": "A5",
+        "isIntl": false
+      },
+      {
+        "gate": "A6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KOAK",
+    "isAcars": true,
+    "opsFreq": "129.850",
+    "gates": [
+      {
+        "gate": "7",
+        "isIntl": false
+      },
+      {
+        "gate": "9",
+        "isIntl": false
+      },
+      {
+        "gate": "9A",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KORD",
+    "isAcars": true,
+    "opsFreq": "130.050",
+    "gates": [
+      {
+        "gate": "L11",
+        "isIntl": false
+      },
+      {
+        "gate": "L5",
+        "isIntl": false
+      },
+      {
+        "gate": "L7",
+        "isIntl": false
+      },
+      {
+        "gate": "L9",
+        "isIntl": false
+      },
+      {
+        "gate": "M1",
+        "isIntl": true
+      },
+      {
+        "gate": "M2",
+        "isIntl": true
+      },
+      {
+        "gate": "M3",
+        "isIntl": true
+      },
+      {
+        "gate": "M5",
+        "isIntl": true
+      },
+      {
+        "gate": "M6",
+        "isIntl": true
+      },
+      {
+        "gate": "M7",
+        "isIntl": true
+      },
+      {
+        "gate": "M14",
+        "isIntl": true
+      },
+      {
+        "gate": "M15",
+        "isIntl": true
+      },
+      {
+        "gate": "M16",
+        "isIntl": true
+      },
+      {
+        "gate": "M17",
+        "isIntl": true
+      },
+      {
+        "gate": "M18",
+        "isIntl": true
+      },
+      {
+        "gate": "M19",
+        "isIntl": true
+      },
+      {
+        "gate": "M20",
+        "isIntl": true
+      },
+      {
+        "gate": "M21",
+        "isIntl": true
+      },
+      {
+        "gate": "M24",
+        "isIntl": true
+      },
+      {
+        "gate": "M25",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KPBI",
+    "isAcars": true,
+    "opsFreq": "129.450",
+    "gates": [
+      {
+        "gate": "C8",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KPDX",
+    "isAcars": true,
+    "opsFreq": "130.350",
+    "gates": [
+      {
+        "gate": "D6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KPHL",
+    "isAcars": true,
+    "opsFreq": "131.050",
+    "gates": [
+      {
+        "gate": "E3",
+        "isIntl": false
+      },
+      {
+        "gate": "E5",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KPHX",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "F1",
+        "isIntl": false
+      },
+      {
+        "gate": "F2",
+        "isIntl": false
+      },
+      {
+        "gate": "F3",
+        "isIntl": false
+      },
+      {
+        "gate": "F4",
+        "isIntl": false
+      },
+      {
+        "gate": "F5",
+        "isIntl": false
+      },
+      {
+        "gate": "F6",
+        "isIntl": false
+      },
+      {
+        "gate": "F7",
+        "isIntl": false
+      },
+      {
+        "gate": "F8",
+        "isIntl": false
+      },
+      {
+        "gate": "F9",
+        "isIntl": false
+      },
+      {
+        "gate": "F10",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KPIT",
+    "isAcars": true,
+    "opsFreq": "131.050",
+    "gates": [
+      {
+        "gate": "B33",
+        "isIntl": false
+      },
+      {
+        "gate": "B35",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KPNS",
+    "isAcars": true,
+    "opsFreq": "129.050",
+    "gates": [
+      {
+        "gate": "8",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KRNO",
+    "isAcars": true,
+    "opsFreq": "129.850",
+    "gates": [
+      {
+        "gate": "B9",
+        "isIntl": false
+      },
+      {
+        "gate": "B11",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KRDU",
+    "isAcars": true,
+    "opsFreq": "131.275",
+    "gates": [
+      {
+        "gate": "A4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KRIC",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "B7",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KRSW",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gate": "D2",
+        "isIntl": false
+      },
+      {
+        "gate": "D4",
+        "isIntl": false
+      },
+      {
+        "gate": "D7",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSAN",
+    "isAcars": true,
+    "opsFreq": "130.900",
+    "gates": [
+      {
+        "gate": "15",
+        "isIntl": false
+      },
+      {
+        "gate": "16",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSDF",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "A6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSEA",
+    "isAcars": true,
+    "opsFreq": "130.450",
+    "gates": [
+      {
+        "gate": "B6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSLC",
+    "isAcars": true,
+    "opsFreq": "131.775",
+    "gates": [
+      {
+        "gate": "B15",
+        "isIntl": false
+      },
+      {
+        "gate": "B22",
+        "isIntl": false
+      },
+      {
+        "gate": "C7",
+        "isIntl": false
+      },
+      {
+        "gate": "C9",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSMF",
+    "isAcars": true,
+    "opsFreq": "129.850",
+    "gates": [
+      {
+        "gate": "B11",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSNA",
+    "isAcars": true,
+    "opsFreq": "130.525",
+    "gates": [
+      {
+        "gate": "14",
+        "isIntl": false
+      },
+      {
+        "gate": "15",
+        "isIntl": false
+      },
+      {
+        "gate": "16",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "KSTL",
+    "isAcars": true,
+    "opsFreq": "129.025",
+    "gates": [
+      {
+        "gate": "C30",
+        "isIntl": false
+      },
+      {
+        "gate": "E29",
+        "isIntl": true
+      }
+    ]
+  },
+  {
+    "icao": "KTPA",
+    "isAcars": true,
+    "opsFreq": "129.600",
+    "gates": [
+      {
+        "gate": "A16",
+        "isIntl": false
+      },
+      {
+        "gate": "A17",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MDPC",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "6",
+        "isIntl": false
+      },
+      {
+        "gate": "7",
+        "isIntl": false
+      },
+      {
+        "gate": "8",
+        "isIntl": false
+      },
+      {
+        "gate": "9",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MDSD",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "A2",
+        "isIntl": false
+      },
+      {
+        "gate": "A5",
+        "isIntl": false
+      },
+      {
+        "gate": "A6",
+        "isIntl": false
+      },
+      {
+        "gate": "B1",
+        "isIntl": false
+      },
+      {
+        "gate": "B2",
+        "isIntl": false
+      },
+      {
+        "gate": "B3",
+        "isIntl": false
+      },
+      {
+        "gate": "B4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MDST",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "B1",
+        "isIntl": false
+      },
+      {
+        "gate": "B4",
+        "isIntl": false
+      },
+      {
+        "gate": "B5",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MGGT",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "12",
+        "isIntl": false
+      },
+      {
+        "gate": "13",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MHLM",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "2",
+        "isIntl": false
+      },
+      {
+        "gate": "3",
+        "isIntl": false
+      },
+      {
+        "gate": "4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MKJP",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "9",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MKJS",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": false
+      },
+      {
+        "gate": "2",
+        "isIntl": false
+      },
+      {
+        "gate": "3",
+        "isIntl": false
+      },
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "5",
+        "isIntl": false
+      },
+      {
+        "gate": "6",
+        "isIntl": false
+      },
+      {
+        "gate": "7",
+        "isIntl": false
+      },
+      {
+        "gate": "8",
+        "isIntl": false
+      },
+      {
+        "gate": "9",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MMUN",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "29",
+        "isIntl": false
+      },
+      {
+        "gate": "30",
+        "isIntl": false
+      },
+      {
+        "gate": "31",
+        "isIntl": false
+      },
+      {
+        "gate": "32",
+        "isIntl": false
+      },
+      {
+        "gate": "33",
+        "isIntl": false
+      },
+      {
+        "gate": "34",
+        "isIntl": false
+      },
+      {
+        "gate": "35",
+        "isIntl": false
+      },
+      {
+        "gate": "36",
+        "isIntl": false
+      },
+      {
+        "gate": "37",
+        "isIntl": false
+      },
+      {
+        "gate": "38",
+        "isIntl": false
+      },
+      {
+        "gate": "39",
+        "isIntl": false
+      },
+      {
+        "gate": "40",
+        "isIntl": false
+      },
+      {
+        "gate": "41",
+        "isIntl": false
+      },
+      {
+        "gate": "42",
+        "isIntl": false
+      },
+      {
+        "gate": "43",
+        "isIntl": false
+      },
+      {
+        "gate": "44",
+        "isIntl": false
+      },
+      {
+        "gate": "45",
+        "isIntl": false
+      },
+      {
+        "gate": "46",
+        "isIntl": false
+      },
+      {
+        "gate": "48",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MNMG",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MPTO",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "142",
+        "isIntl": false
+      },
+      {
+        "gate": "144",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MROC",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "A1",
+        "isIntl": false
+      },
+      {
+        "gate": "A10",
+        "isIntl": false
+      },
+      {
+        "gate": "A2A",
+        "isIntl": false
+      },
+      {
+        "gate": "A2B",
+        "isIntl": false
+      },
+      {
+        "gate": "A4A",
+        "isIntl": false
+      },
+      {
+        "gate": "A4B",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MSLP",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "10",
+        "isIntl": false
+      },
+      {
+        "gate": "11",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MTPP",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "A4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SEGU",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "22",
+        "isIntl": false
+      },
+      {
+        "gate": "20A",
+        "isIntl": false
+      },
+      {
+        "gate": "21A",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKAR",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "3",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKBG",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "7",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKBO",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "31",
+        "isIntl": false
+      },
+      {
+        "gate": "34",
+        "isIntl": false
+      },
+      {
+        "gate": "39",
+        "isIntl": false
+      },
+      {
+        "gate": "45",
+        "isIntl": false
+      },
+      {
+        "gate": "47",
+        "isIntl": false
+      },
+      {
+        "gate": "51",
+        "isIntl": false
+      },
+      {
+        "gate": "54",
+        "isIntl": false
+      },
+      {
+        "gate": "56",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKBQ",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKCG",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "6",
+        "isIntl": false
+      },
+      {
+        "gate": "7",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKCL",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "D16",
+        "isIntl": false
+      },
+      {
+        "gate": "D17",
+        "isIntl": false
+      },
+      {
+        "gate": "D18",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SKRG",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "10",
+        "isIntl": false
+      },
+      {
+        "gate": "11",
+        "isIntl": false
+      },
+      {
+        "gate": "12A",
+        "isIntl": false
+      },
+      {
+        "gate": "12B",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "SPJC",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "13",
+        "isIntl": false
+      },
+      {
+        "gate": "14",
+        "isIntl": false
+      },
+      {
+        "gate": "16",
+        "isIntl": false
+      },
+      {
+        "gate": "17",
+        "isIntl": false
+      },
+      {
+        "gate": "23",
+        "isIntl": false
+      },
+      {
+        "gate": "24",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TIST",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "2",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TISX",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "8",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TJBQ",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "1",
+        "isIntl": false
+      },
+      {
+        "gate": "2",
+        "isIntl": false
+      },
+      {
+        "gate": "3",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TJSJ",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "B2",
+        "isIntl": false
+      },
+      {
+        "gate": "B3",
+        "isIntl": false
+      },
+      {
+        "gate": "B4",
+        "isIntl": false
+      },
+      {
+        "gate": "B6",
+        "isIntl": false
+      },
+      {
+        "gate": "B7",
+        "isIntl": false
+      },
+      {
+        "gate": "B8",
+        "isIntl": false
+      },
+      {
+        "gate": "B9",
+        "isIntl": false
+      },
+      {
+        "gate": "C10",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TNCA",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "4",
+        "isIntl": false
+      },
+      {
+        "gate": "5",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "TNCM",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gate": "A4",
+        "isIntl": false
+      }
+    ]
+  }
+]

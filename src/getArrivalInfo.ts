@@ -1,3 +1,4 @@
+import { findStationByIcao } from './data/stations'
 import getGate from './getGate'
 
 /**
@@ -10,16 +11,10 @@ const getArrivalInfo = (flightInfo: {
   dep: string
   callsign: string
 }): string => {
-  const gateNumber = getGate(
-    flightInfo.arr,
-    !flightInfo.dep.startsWith(flightInfo.arr[0])
-  )
-
-  // const arrivalWeather = await axios.get(`https://avwx.rest/api/metar/${flightInfo.arr}?`, {
-  //     headers: {
-  //         Authorization: `Bearer ${process.env.AVWX_KEY}`
-  //     }
-  // })
+  const station = findStationByIcao(flightInfo.arr)
+  const gate = station
+    ? getGate(station, !flightInfo.dep.startsWith(flightInfo.arr[0]))
+    : null
 
   const callsignFormatted = flightInfo.callsign.replace(/\D/g, '')
 
@@ -27,10 +22,10 @@ const getArrivalInfo = (flightInfo: {
     `***AUTOMATED UPLINK***`,
     `GATE ASSIGNMENT FOR`,
     `FLIGHT ${callsignFormatted}`,
-    `ARRIVING ${flightInfo.arr} IS ${gateNumber ?? 'UNKNOWN'}`,
-    `GROUND POWER: ${gateNumber ? 'YES' : 'UNKNOWN'}`,
-    `GROUND AIR: ${gateNumber ? 'YES' : 'UNKNOWN'}`,
-    `OPS FREQ: NONE`,
+    `ARRIVING ${flightInfo.arr} IS ${gate?.gateNumber ?? 'UNKNOWN'}`,
+    `GROUND POWER: ${gate ? 'YES' : 'UNKNOWN'}`,
+    `GROUND AIR: ${gate ? 'YES' : 'UNKNOWN'}`,
+    `OPS FREQ: ${station?.opsFreq ?? 'NONE'}`,
     `MESSAGE: KEEP APU`,
     `SHUTDOWN WHEN ABLE`,
   ]

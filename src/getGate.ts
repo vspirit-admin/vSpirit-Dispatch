@@ -2,52 +2,51 @@ import _ from 'lodash'
 import { Logger } from 'tslog'
 
 import { arrGatesAssigned } from './caches'
-import gates from './data/gates'
 
 const gateLogger = new Logger({ name: 'gateLogger' })
 
 interface Gate {
+  gateNumber: string
+  isIntl: boolean
+}
+
+export interface Station {
   icao: string
-  gate_number: string
-  international: boolean
+  acars: boolean
+  opsFreq: string
+  gates: Gate[]
 }
 
 /**
  * Retrieves a valid gate for the given airport and international status
  *
- * @param icao 4-letter ICAO airport code
+ * @param station Station to choose a gate from
  * @param international Whether the flight is international and not domestic
  * @returns Gate object or null if not found
  */
-const getGate = (icao: string, international: boolean): string | null => {
-  if (icao.length !== 4) {
-    gateLogger.error('Invalid ICAO:', icao)
-    return null
-  }
-
-  const airportGates: Gate[] = gates.filter((gate) => gate.icao === icao)
-  const gateNumbersAlreadyAssigned = airportGates
-    .filter(({ gate_number }) =>
-      arrGatesAssigned.get(`${icao}/${gate_number}`.toUpperCase())
+const getGate = (station: Station, international: boolean): Gate | null => {
+  const gateNumbersAlreadyAssigned = station.gates
+    .filter(({ gateNumber }) =>
+      arrGatesAssigned.get(`${station.icao}/${gateNumber}`.toUpperCase())
     )
-    .map(({ gate_number }) => gate_number)
+    .map(({ gateNumber }) => gateNumber)
 
-  if (airportGates.length === 0) {
-    gateLogger.warn(`No gate found at ${icao}.`)
+  if (station.gates.length === 0) {
+    gateLogger.warn(`No gate found at ${station.icao}.`)
     return null
   }
 
-  const possibleGatesByInternational = airportGates.filter(
-    (gate) => gate.international === international
+  const possibleGatesByInternational = station.gates.filter(
+    (gate) => gate.isIntl === international
   )
-  const possibleGatesByAlreadyAssigned = airportGates.filter(
-    (gate) => !gateNumbersAlreadyAssigned.includes(gate.gate_number)
+  const possibleGatesByAlreadyAssigned = station.gates.filter(
+    (gate) => !gateNumbersAlreadyAssigned.includes(gate.gateNumber)
   )
 
   let possibleGates = _.unionBy(
     possibleGatesByAlreadyAssigned,
     possibleGatesByInternational,
-    'gate_number'
+    'gateNumber'
   )
 
   // If there is no union, prioritize stand availability over international gates.
@@ -57,16 +56,19 @@ const getGate = (icao: string, international: boolean): string | null => {
         ? possibleGatesByAlreadyAssigned
         : possibleGatesByInternational.length > 0
         ? possibleGatesByInternational
-        : airportGates
+        : station.gates
   }
 
-  const chosenGateNumber =
-    possibleGates[Math.floor(Math.random() * possibleGates.length)].gate_number
+  const chosenGate =
+    possibleGates[Math.floor(Math.random() * possibleGates.length)]
 
-  arrGatesAssigned.set(`${icao}/${chosenGateNumber}`.toUpperCase(), true)
-  gateLogger.info(`Assigning gate ${chosenGateNumber} at ${icao}.`)
+  arrGatesAssigned.set(
+    `${station.icao}/${chosenGate.gateNumber}`.toUpperCase(),
+    true
+  )
+  gateLogger.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
 
-  return chosenGateNumber
+  return chosenGate
 }
 
 export default getGate
