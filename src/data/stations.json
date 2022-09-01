@@ -5,7 +5,7 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "A7",
+        "gateNumber": "A7",
         "isIntl": false
       }
     ]
@@ -16,31 +16,31 @@
     "opsFreq": "130.550",
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": false
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       },
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       },
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": false
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": false
       },
       {
-        "gate": "10",
+        "gateNumber": "10",
         "isIntl": false
       }
     ]
@@ -51,11 +51,11 @@
     "opsFreq": "131.100",
     "gates": [
       {
-        "gate": "D2",
+        "gateNumber": "D2",
         "isIntl": false
       },
       {
-        "gate": "D4",
+        "gateNumber": "D4",
         "isIntl": false
       }
     ]
@@ -66,23 +66,23 @@
     "opsFreq": "129.050",
     "gates": [
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": false
       },
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": false
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       },
       {
-        "gate": "11",
+        "gateNumber": "11",
         "isIntl": false
       }
     ]
@@ -93,11 +93,11 @@
     "opsFreq": "131.100",
     "gates": [
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       }
     ]
@@ -108,7 +108,7 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "A26",
+        "gateNumber": "A26",
         "isIntl": false
       }
     ]
@@ -119,7 +119,7 @@
     "opsFreq": "130.000",
     "gates": [
       {
-        "gate": "A1",
+        "gateNumber": "A1",
         "isIntl": false
       }
     ]
@@ -130,7 +130,7 @@
     "opsFreq": "131.575",
     "gates": [
       {
-        "gate": "B19",
+        "gateNumber": "B19",
         "isIntl": false
       }
     ]
@@ -141,11 +141,11 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "B37",
+        "gateNumber": "B37",
         "isIntl": false
       },
       {
-        "gate": "B38",
+        "gateNumber": "B38",
         "isIntl": false
       }
     ]
@@ -156,7 +156,7 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "B2",
+        "gateNumber": "B2",
         "isIntl": false
       }
     ]
@@ -167,23 +167,23 @@
     "opsFreq": "131.100",
     "gates": [
       {
-        "gate": "D8",
+        "gateNumber": "D8",
         "isIntl": false
       },
       {
-        "gate": "D10",
+        "gateNumber": "D10",
         "isIntl": false
       },
       {
-        "gate": "D11",
+        "gateNumber": "D11",
         "isIntl": false
       },
       {
-        "gate": "D12",
+        "gateNumber": "D12",
         "isIntl": false
       },
       {
-        "gate": "D14",
+        "gateNumber": "D14",
         "isIntl": false
       }
     ]
@@ -194,7 +194,7 @@
     "opsFreq": "130.725",
     "gates": [
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": false
       }
     ]
@@ -205,7 +205,7 @@
     "opsFreq": "131.425",
     "gates": [
       {
-        "gate": "A2",
+        "gateNumber": "A2",
         "isIntl": false
       }
     ]
@@ -216,7 +216,7 @@
     "opsFreq": "131.275",
     "gates": [
       {
-        "gate": "A29",
+        "gateNumber": "A29",
         "isIntl": false
       }
     ]
@@ -227,7 +227,7 @@
     "opsFreq": "130.925",
     "gates": [
       {
-        "gate": "B35",
+        "gateNumber": "B35",
         "isIntl": false
       }
     ]
@@ -238,7 +238,7 @@
     "opsFreq": "122.950",
     "gates": [
       {
-        "gate": "B2",
+        "gateNumber": "B2",
         "isIntl": false
       }
     ]
@@ -249,11 +249,11 @@
     "opsFreq": "131.050",
     "gates": [
       {
-        "gate": "C48",
+        "gateNumber": "C48",
         "isIntl": false
       },
       {
-        "gate": "C50",
+        "gateNumber": "C50",
         "isIntl": false
       }
     ]
@@ -264,147 +264,147 @@
     "opsFreq": "131.150",
     "gates": [
       {
-        "gate": "E2",
+        "gateNumber": "E2",
         "isIntl": false
       },
       {
-        "gate": "E4",
+        "gateNumber": "E4",
         "isIntl": false
       },
       {
-        "gate": "E5",
+        "gateNumber": "E5",
         "isIntl": false
       },
       {
-        "gate": "E6",
+        "gateNumber": "E6",
         "isIntl": false
       },
       {
-        "gate": "E7",
+        "gateNumber": "E7",
         "isIntl": false
       },
       {
-        "gate": "E8",
+        "gateNumber": "E8",
         "isIntl": false
       },
       {
-        "gate": "E9",
+        "gateNumber": "E9",
         "isIntl": false
       },
       {
-        "gate": "E10",
+        "gateNumber": "E10",
         "isIntl": false
       },
       {
-        "gate": "E11",
+        "gateNumber": "E11",
         "isIntl": false
       },
       {
-        "gate": "E12",
+        "gateNumber": "E12",
         "isIntl": false
       },
       {
-        "gate": "E13",
+        "gateNumber": "E13",
         "isIntl": false
       },
       {
-        "gate": "E14",
+        "gateNumber": "E14",
         "isIntl": false
       },
       {
-        "gate": "E15",
+        "gateNumber": "E15",
         "isIntl": false
       },
       {
-        "gate": "E16",
+        "gateNumber": "E16",
         "isIntl": false
       },
       {
-        "gate": "E17",
+        "gateNumber": "E17",
         "isIntl": false
       },
       {
-        "gate": "E18",
+        "gateNumber": "E18",
         "isIntl": false
       },
       {
-        "gate": "E19",
+        "gateNumber": "E19",
         "isIntl": false
       },
       {
-        "gate": "E20",
+        "gateNumber": "E20",
         "isIntl": false
       },
       {
-        "gate": "E21",
+        "gateNumber": "E21",
         "isIntl": false
       },
       {
-        "gate": "E22",
+        "gateNumber": "E22",
         "isIntl": false
       },
       {
-        "gate": "E23",
+        "gateNumber": "E23",
         "isIntl": false
       },
       {
-        "gate": "E24",
+        "gateNumber": "E24",
         "isIntl": false
       },
       {
-        "gate": "E25",
+        "gateNumber": "E25",
         "isIntl": false
       },
       {
-        "gate": "E26",
+        "gateNumber": "E26",
         "isIntl": false
       },
       {
-        "gate": "E27",
+        "gateNumber": "E27",
         "isIntl": false
       },
       {
-        "gate": "E28",
+        "gateNumber": "E28",
         "isIntl": false
       },
       {
-        "gate": "E29",
+        "gateNumber": "E29",
         "isIntl": false
       },
       {
-        "gate": "E30",
+        "gateNumber": "E30",
         "isIntl": false
       },
       {
-        "gate": "E31",
+        "gateNumber": "E31",
         "isIntl": false
       },
       {
-        "gate": "E32",
+        "gateNumber": "E32",
         "isIntl": false
       },
       {
-        "gate": "E33",
+        "gateNumber": "E33",
         "isIntl": false
       },
       {
-        "gate": "E34",
+        "gateNumber": "E34",
         "isIntl": false
       },
       {
-        "gate": "E35",
+        "gateNumber": "E35",
         "isIntl": false
       },
       {
-        "gate": "E36",
+        "gateNumber": "E36",
         "isIntl": false
       },
       {
-        "gate": "E37",
+        "gateNumber": "E37",
         "isIntl": false
       },
       {
-        "gate": "E38",
+        "gateNumber": "E38",
         "isIntl": false
       }
     ]
@@ -415,119 +415,119 @@
     "opsFreq": "130.320",
     "gates": [
       {
-        "gate": "D1",
+        "gateNumber": "D1",
         "isIntl": false
       },
       {
-        "gate": "D2",
+        "gateNumber": "D2",
         "isIntl": false
       },
       {
-        "gate": "D3",
+        "gateNumber": "D3",
         "isIntl": true
       },
       {
-        "gate": "D4",
+        "gateNumber": "D4",
         "isIntl": false
       },
       {
-        "gate": "D5",
+        "gateNumber": "D5",
         "isIntl": false
       },
       {
-        "gate": "D6",
+        "gateNumber": "D6",
         "isIntl": false
       },
       {
-        "gate": "D8",
+        "gateNumber": "D8",
         "isIntl": false
       },
       {
-        "gate": "D9",
+        "gateNumber": "D9",
         "isIntl": true
       },
       {
-        "gate": "D10",
+        "gateNumber": "D10",
         "isIntl": true
       },
       {
-        "gate": "D11",
+        "gateNumber": "D11",
         "isIntl": false
       },
       {
-        "gate": "D12",
+        "gateNumber": "D12",
         "isIntl": false
       },
       {
-        "gate": "D14",
+        "gateNumber": "D14",
         "isIntl": false
       },
       {
-        "gate": "D15",
+        "gateNumber": "D15",
         "isIntl": false
       },
       {
-        "gate": "D16",
+        "gateNumber": "D16",
         "isIntl": false
       },
       {
-        "gate": "D17",
+        "gateNumber": "D17",
         "isIntl": false
       },
       {
-        "gate": "D18",
+        "gateNumber": "D18",
         "isIntl": false
       },
       {
-        "gate": "D19",
+        "gateNumber": "D19",
         "isIntl": false
       },
       {
-        "gate": "D20",
+        "gateNumber": "D20",
         "isIntl": false
       },
       {
-        "gate": "D21",
+        "gateNumber": "D21",
         "isIntl": false
       },
       {
-        "gate": "D23",
+        "gateNumber": "D23",
         "isIntl": false
       },
       {
-        "gate": "D24",
+        "gateNumber": "D24",
         "isIntl": false
       },
       {
-        "gate": "D25",
+        "gateNumber": "D25",
         "isIntl": false
       },
       {
-        "gate": "D26",
+        "gateNumber": "D26",
         "isIntl": false
       },
       {
-        "gate": "D27",
+        "gateNumber": "D27",
         "isIntl": false
       },
       {
-        "gate": "D28",
+        "gateNumber": "D28",
         "isIntl": false
       },
       {
-        "gate": "D29",
+        "gateNumber": "D29",
         "isIntl": false
       },
       {
-        "gate": "D30",
+        "gateNumber": "D30",
         "isIntl": false
       },
       {
-        "gate": "D31",
+        "gateNumber": "D31",
         "isIntl": false
       },
       {
-        "gate": "D32",
+        "gateNumber": "D32",
         "isIntl": false
       }
     ]
@@ -538,79 +538,79 @@
     "opsFreq": "130.625",
     "gates": [
       {
-        "gate": "51",
+        "gateNumber": "51",
         "isIntl": false
       },
       {
-        "gate": "52",
+        "gateNumber": "52",
         "isIntl": false
       },
       {
-        "gate": "53",
+        "gateNumber": "53",
         "isIntl": false
       },
       {
-        "gate": "54",
+        "gateNumber": "54",
         "isIntl": false
       },
       {
-        "gate": "55",
+        "gateNumber": "55",
         "isIntl": false
       },
       {
-        "gate": "56",
+        "gateNumber": "56",
         "isIntl": false
       },
       {
-        "gate": "57",
+        "gateNumber": "57",
         "isIntl": false
       },
       {
-        "gate": "60",
+        "gateNumber": "60",
         "isIntl": false
       },
       {
-        "gate": "61",
+        "gateNumber": "61",
         "isIntl": false
       },
       {
-        "gate": "62",
+        "gateNumber": "62",
         "isIntl": false
       },
       {
-        "gate": "63",
+        "gateNumber": "63",
         "isIntl": false
       },
       {
-        "gate": "65",
+        "gateNumber": "65",
         "isIntl": false
       },
       {
-        "gate": "66",
+        "gateNumber": "66",
         "isIntl": false
       },
       {
-        "gate": "67",
+        "gateNumber": "67",
         "isIntl": false
       },
       {
-        "gate": "68",
+        "gateNumber": "68",
         "isIntl": false
       },
       {
-        "gate": "40",
+        "gateNumber": "40",
         "isIntl": false
       },
       {
-        "gate": "41A",
+        "gateNumber": "41A",
         "isIntl": false
       },
       {
-        "gate": "41B",
+        "gateNumber": "41B",
         "isIntl": false
       },
       {
-        "gate": "42",
+        "gateNumber": "42",
         "isIntl": false
       }
     ]
@@ -621,79 +621,79 @@
     "opsFreq": "130.120",
     "gates": [
       {
-        "gate": "E9",
+        "gateNumber": "E9",
         "isIntl": false
       },
       {
-        "gate": "F2",
+        "gateNumber": "F2",
         "isIntl": false
       },
       {
-        "gate": "F4",
+        "gateNumber": "F4",
         "isIntl": false
       },
       {
-        "gate": "F6",
+        "gateNumber": "F6",
         "isIntl": false
       },
       {
-        "gate": "F8",
+        "gateNumber": "F8",
         "isIntl": false
       },
       {
-        "gate": "G1",
+        "gateNumber": "G1",
         "isIntl": true
       },
       {
-        "gate": "G10",
+        "gateNumber": "G10",
         "isIntl": true
       },
       {
-        "gate": "G11",
+        "gateNumber": "G11",
         "isIntl": true
       },
       {
-        "gate": "G12",
+        "gateNumber": "G12",
         "isIntl": true
       },
       {
-        "gate": "G13",
+        "gateNumber": "G13",
         "isIntl": true
       },
       {
-        "gate": "G14",
+        "gateNumber": "G14",
         "isIntl": true
       },
       {
-        "gate": "G2",
+        "gateNumber": "G2",
         "isIntl": true
       },
       {
-        "gate": "G3",
+        "gateNumber": "G3",
         "isIntl": true
       },
       {
-        "gate": "G4",
+        "gateNumber": "G4",
         "isIntl": true
       },
       {
-        "gate": "G5",
+        "gateNumber": "G5",
         "isIntl": true
       },
       {
-        "gate": "G6",
+        "gateNumber": "G6",
         "isIntl": true
       },
       {
-        "gate": "G7",
+        "gateNumber": "G7",
         "isIntl": true
       },
       {
-        "gate": "G8",
+        "gateNumber": "G8",
         "isIntl": true
       },
       {
-        "gate": "G9",
+        "gateNumber": "G9",
         "isIntl": true
       }
     ]
@@ -704,7 +704,7 @@
     "opsFreq": "122.950",
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       }
     ]
@@ -715,67 +715,67 @@
     "opsFreq": "130.950",
     "gates": [
       {
-        "gate": "A17",
+        "gateNumber": "A17",
         "isIntl": false
       },
       {
-        "gate": "A18",
+        "gateNumber": "A18",
         "isIntl": false
       },
       {
-        "gate": "A19",
+        "gateNumber": "A19",
         "isIntl": false
       },
       {
-        "gate": "A24",
+        "gateNumber": "A24",
         "isIntl": false
       },
       {
-        "gate": "D1",
+        "gateNumber": "D1",
         "isIntl": true
       },
       {
-        "gate": "D2",
+        "gateNumber": "D2",
         "isIntl": true
       },
       {
-        "gate": "D3",
+        "gateNumber": "D3",
         "isIntl": true
       },
       {
-        "gate": "D4",
+        "gateNumber": "D4",
         "isIntl": true
       },
       {
-        "gate": "D5",
+        "gateNumber": "D5",
         "isIntl": true
       },
       {
-        "gate": "D6",
+        "gateNumber": "D6",
         "isIntl": true
       },
       {
-        "gate": "D7",
+        "gateNumber": "D7",
         "isIntl": true
       },
       {
-        "gate": "D8",
+        "gateNumber": "D8",
         "isIntl": true
       },
       {
-        "gate": "D9",
+        "gateNumber": "D9",
         "isIntl": true
       },
       {
-        "gate": "D10",
+        "gateNumber": "D10",
         "isIntl": true
       },
       {
-        "gate": "D11",
+        "gateNumber": "D11",
         "isIntl": true
       },
       {
-        "gate": "D12",
+        "gateNumber": "D12",
         "isIntl": true
       }
     ]
@@ -786,7 +786,7 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "A20",
+        "gateNumber": "A20",
         "isIntl": false
       }
     ]
@@ -797,43 +797,43 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "A10",
+        "gateNumber": "A10",
         "isIntl": false
       },
       {
-        "gate": "A11",
+        "gateNumber": "A11",
         "isIntl": false
       },
       {
-        "gate": "A12",
+        "gateNumber": "A12",
         "isIntl": false
       },
       {
-        "gate": "A14",
+        "gateNumber": "A14",
         "isIntl": false
       },
       {
-        "gate": "A5",
+        "gateNumber": "A5",
         "isIntl": false
       },
       {
-        "gate": "A7",
+        "gateNumber": "A7",
         "isIntl": false
       },
       {
-        "gate": "A8",
+        "gateNumber": "A8",
         "isIntl": false
       },
       {
-        "gate": "B19",
+        "gateNumber": "B19",
         "isIntl": false
       },
       {
-        "gate": "B20",
+        "gateNumber": "B20",
         "isIntl": false
       },
       {
-        "gate": "B21",
+        "gateNumber": "B21",
         "isIntl": false
       }
     ]
@@ -844,35 +844,35 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "50",
+        "gateNumber": "50",
         "isIntl": false
       },
       {
-        "gate": "56A",
+        "gateNumber": "56A",
         "isIntl": false
       },
       {
-        "gate": "51A",
+        "gateNumber": "51A",
         "isIntl": false
       },
       {
-        "gate": "54A",
+        "gateNumber": "54A",
         "isIntl": false
       },
       {
-        "gate": "54B",
+        "gateNumber": "54B",
         "isIntl": false
       },
       {
-        "gate": "57",
+        "gateNumber": "57",
         "isIntl": false
       },
       {
-        "gate": "58",
+        "gateNumber": "58",
         "isIntl": false
       },
       {
-        "gate": "59",
+        "gateNumber": "59",
         "isIntl": false
       }
     ]
@@ -883,11 +883,11 @@
     "opsFreq": "122.950",
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": false
       },
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       }
     ]
@@ -898,19 +898,19 @@
     "opsFreq": "130.170",
     "gates": [
       {
-        "gate": "A3",
+        "gateNumber": "A3",
         "isIntl": false
       },
       {
-        "gate": "A4",
+        "gateNumber": "A4",
         "isIntl": false
       },
       {
-        "gate": "A5",
+        "gateNumber": "A5",
         "isIntl": false
       },
       {
-        "gate": "A6",
+        "gateNumber": "A6",
         "isIntl": false
       }
     ]
@@ -921,11 +921,11 @@
     "opsFreq": "129.825",
     "gates": [
       {
-        "gate": "77",
+        "gateNumber": "77",
         "isIntl": false
       },
       {
-        "gate": "79",
+        "gateNumber": "79",
         "isIntl": false
       }
     ]
@@ -936,135 +936,135 @@
     "opsFreq": "131.100",
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": true
       },
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": true
       },
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": true
       },
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": true
       },
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": true
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": true
       },
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": true
       },
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": true
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": true
       },
       {
-        "gate": "10",
+        "gateNumber": "10",
         "isIntl": true
       },
       {
-        "gate": "11",
+        "gateNumber": "11",
         "isIntl": true
       },
       {
-        "gate": "12",
+        "gateNumber": "12",
         "isIntl": true
       },
       {
-        "gate": "13",
+        "gateNumber": "13",
         "isIntl": true
       },
       {
-        "gate": "14",
+        "gateNumber": "14",
         "isIntl": true
       },
       {
-        "gate": "15",
+        "gateNumber": "15",
         "isIntl": true
       },
       {
-        "gate": "16",
+        "gateNumber": "16",
         "isIntl": true
       },
       {
-        "gate": "17",
+        "gateNumber": "17",
         "isIntl": true
       },
       {
-        "gate": "18",
+        "gateNumber": "18",
         "isIntl": true
       },
       {
-        "gate": "19",
+        "gateNumber": "19",
         "isIntl": true
       },
       {
-        "gate": "20",
+        "gateNumber": "20",
         "isIntl": true
       },
       {
-        "gate": "21",
+        "gateNumber": "21",
         "isIntl": true
       },
       {
-        "gate": "22",
+        "gateNumber": "22",
         "isIntl": true
       },
       {
-        "gate": "23",
+        "gateNumber": "23",
         "isIntl": true
       },
       {
-        "gate": "24",
+        "gateNumber": "24",
         "isIntl": true
       },
       {
-        "gate": "25",
+        "gateNumber": "25",
         "isIntl": true
       },
       {
-        "gate": "26",
+        "gateNumber": "26",
         "isIntl": true
       },
       {
-        "gate": "27",
+        "gateNumber": "27",
         "isIntl": true
       },
       {
-        "gate": "28",
+        "gateNumber": "28",
         "isIntl": true
       },
       {
-        "gate": "30",
+        "gateNumber": "30",
         "isIntl": false
       },
       {
-        "gate": "31",
+        "gateNumber": "31",
         "isIntl": false
       },
       {
-        "gate": "32",
+        "gateNumber": "32",
         "isIntl": false
       },
       {
-        "gate": "33",
+        "gateNumber": "33",
         "isIntl": false
       },
       {
-        "gate": "34",
+        "gateNumber": "34",
         "isIntl": false
       }
     ]
@@ -1075,7 +1075,7 @@
     "opsFreq": "129.600",
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": true
       }
     ]
@@ -1086,23 +1086,23 @@
     "opsFreq": "129.600",
     "gates": [
       {
-        "gate": "G8",
+        "gateNumber": "G8",
         "isIntl": false
       },
       {
-        "gate": "G10",
+        "gateNumber": "G10",
         "isIntl": false
       },
       {
-        "gate": "G12",
+        "gateNumber": "G12",
         "isIntl": false
       },
       {
-        "gate": "G14",
+        "gateNumber": "G14",
         "isIntl": false
       },
       {
-        "gate": "J4",
+        "gateNumber": "J4",
         "isIntl": true
       }
     ]
@@ -1113,7 +1113,7 @@
     "opsFreq": "131.750",
     "gates": [
       {
-        "gate": "D43",
+        "gateNumber": "D43",
         "isIntl": false
       }
     ]
@@ -1124,7 +1124,7 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": false
       }
     ]
@@ -1135,15 +1135,15 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "A2",
+        "gateNumber": "A2",
         "isIntl": true
       },
       {
-        "gate": "E2",
+        "gateNumber": "E2",
         "isIntl": false
       },
       {
-        "gate": "E4",
+        "gateNumber": "E4",
         "isIntl": false
       }
     ]
@@ -1154,19 +1154,19 @@
     "opsFreq": "130.750",
     "gates": [
       {
-        "gate": "C12",
+        "gateNumber": "C12",
         "isIntl": false
       },
       {
-        "gate": "C14",
+        "gateNumber": "C14",
         "isIntl": false
       },
       {
-        "gate": "C15",
+        "gateNumber": "C15",
         "isIntl": false
       },
       {
-        "gate": "C16",
+        "gateNumber": "C16",
         "isIntl": false
       }
     ]
@@ -1177,11 +1177,11 @@
     "opsFreq": "131.270",
     "gates": [
       {
-        "gate": "A5",
+        "gateNumber": "A5",
         "isIntl": false
       },
       {
-        "gate": "A6",
+        "gateNumber": "A6",
         "isIntl": false
       }
     ]
@@ -1192,15 +1192,15 @@
     "opsFreq": "129.850",
     "gates": [
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": false
       },
       {
-        "gate": "9A",
+        "gateNumber": "9A",
         "isIntl": false
       }
     ]
@@ -1211,83 +1211,83 @@
     "opsFreq": "130.050",
     "gates": [
       {
-        "gate": "L11",
+        "gateNumber": "L11",
         "isIntl": false
       },
       {
-        "gate": "L5",
+        "gateNumber": "L5",
         "isIntl": false
       },
       {
-        "gate": "L7",
+        "gateNumber": "L7",
         "isIntl": false
       },
       {
-        "gate": "L9",
+        "gateNumber": "L9",
         "isIntl": false
       },
       {
-        "gate": "M1",
+        "gateNumber": "M1",
         "isIntl": true
       },
       {
-        "gate": "M2",
+        "gateNumber": "M2",
         "isIntl": true
       },
       {
-        "gate": "M3",
+        "gateNumber": "M3",
         "isIntl": true
       },
       {
-        "gate": "M5",
+        "gateNumber": "M5",
         "isIntl": true
       },
       {
-        "gate": "M6",
+        "gateNumber": "M6",
         "isIntl": true
       },
       {
-        "gate": "M7",
+        "gateNumber": "M7",
         "isIntl": true
       },
       {
-        "gate": "M14",
+        "gateNumber": "M14",
         "isIntl": true
       },
       {
-        "gate": "M15",
+        "gateNumber": "M15",
         "isIntl": true
       },
       {
-        "gate": "M16",
+        "gateNumber": "M16",
         "isIntl": true
       },
       {
-        "gate": "M17",
+        "gateNumber": "M17",
         "isIntl": true
       },
       {
-        "gate": "M18",
+        "gateNumber": "M18",
         "isIntl": true
       },
       {
-        "gate": "M19",
+        "gateNumber": "M19",
         "isIntl": true
       },
       {
-        "gate": "M20",
+        "gateNumber": "M20",
         "isIntl": true
       },
       {
-        "gate": "M21",
+        "gateNumber": "M21",
         "isIntl": true
       },
       {
-        "gate": "M24",
+        "gateNumber": "M24",
         "isIntl": true
       },
       {
-        "gate": "M25",
+        "gateNumber": "M25",
         "isIntl": true
       }
     ]
@@ -1298,7 +1298,7 @@
     "opsFreq": "129.450",
     "gates": [
       {
-        "gate": "C8",
+        "gateNumber": "C8",
         "isIntl": false
       }
     ]
@@ -1309,7 +1309,7 @@
     "opsFreq": "130.350",
     "gates": [
       {
-        "gate": "D6",
+        "gateNumber": "D6",
         "isIntl": false
       }
     ]
@@ -1320,11 +1320,11 @@
     "opsFreq": "131.050",
     "gates": [
       {
-        "gate": "E3",
+        "gateNumber": "E3",
         "isIntl": false
       },
       {
-        "gate": "E5",
+        "gateNumber": "E5",
         "isIntl": false
       }
     ]
@@ -1335,43 +1335,43 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "F1",
+        "gateNumber": "F1",
         "isIntl": false
       },
       {
-        "gate": "F2",
+        "gateNumber": "F2",
         "isIntl": false
       },
       {
-        "gate": "F3",
+        "gateNumber": "F3",
         "isIntl": false
       },
       {
-        "gate": "F4",
+        "gateNumber": "F4",
         "isIntl": false
       },
       {
-        "gate": "F5",
+        "gateNumber": "F5",
         "isIntl": false
       },
       {
-        "gate": "F6",
+        "gateNumber": "F6",
         "isIntl": false
       },
       {
-        "gate": "F7",
+        "gateNumber": "F7",
         "isIntl": false
       },
       {
-        "gate": "F8",
+        "gateNumber": "F8",
         "isIntl": false
       },
       {
-        "gate": "F9",
+        "gateNumber": "F9",
         "isIntl": false
       },
       {
-        "gate": "F10",
+        "gateNumber": "F10",
         "isIntl": false
       }
     ]
@@ -1382,11 +1382,11 @@
     "opsFreq": "131.050",
     "gates": [
       {
-        "gate": "B33",
+        "gateNumber": "B33",
         "isIntl": false
       },
       {
-        "gate": "B35",
+        "gateNumber": "B35",
         "isIntl": false
       }
     ]
@@ -1397,7 +1397,7 @@
     "opsFreq": "129.050",
     "gates": [
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": false
       }
     ]
@@ -1408,11 +1408,11 @@
     "opsFreq": "129.850",
     "gates": [
       {
-        "gate": "B9",
+        "gateNumber": "B9",
         "isIntl": false
       },
       {
-        "gate": "B11",
+        "gateNumber": "B11",
         "isIntl": false
       }
     ]
@@ -1423,7 +1423,7 @@
     "opsFreq": "131.275",
     "gates": [
       {
-        "gate": "A4",
+        "gateNumber": "A4",
         "isIntl": false
       }
     ]
@@ -1434,7 +1434,7 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "B7",
+        "gateNumber": "B7",
         "isIntl": false
       }
     ]
@@ -1445,15 +1445,15 @@
     "opsFreq": "131.100",
     "gates": [
       {
-        "gate": "D2",
+        "gateNumber": "D2",
         "isIntl": false
       },
       {
-        "gate": "D4",
+        "gateNumber": "D4",
         "isIntl": false
       },
       {
-        "gate": "D7",
+        "gateNumber": "D7",
         "isIntl": false
       }
     ]
@@ -1464,11 +1464,11 @@
     "opsFreq": "130.900",
     "gates": [
       {
-        "gate": "15",
+        "gateNumber": "15",
         "isIntl": false
       },
       {
-        "gate": "16",
+        "gateNumber": "16",
         "isIntl": false
       }
     ]
@@ -1479,7 +1479,7 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "A6",
+        "gateNumber": "A6",
         "isIntl": false
       }
     ]
@@ -1490,7 +1490,7 @@
     "opsFreq": "130.450",
     "gates": [
       {
-        "gate": "B6",
+        "gateNumber": "B6",
         "isIntl": false
       }
     ]
@@ -1501,19 +1501,19 @@
     "opsFreq": "131.775",
     "gates": [
       {
-        "gate": "B15",
+        "gateNumber": "B15",
         "isIntl": false
       },
       {
-        "gate": "B22",
+        "gateNumber": "B22",
         "isIntl": false
       },
       {
-        "gate": "C7",
+        "gateNumber": "C7",
         "isIntl": false
       },
       {
-        "gate": "C9",
+        "gateNumber": "C9",
         "isIntl": false
       }
     ]
@@ -1524,7 +1524,7 @@
     "opsFreq": "129.850",
     "gates": [
       {
-        "gate": "B11",
+        "gateNumber": "B11",
         "isIntl": false
       }
     ]
@@ -1535,15 +1535,15 @@
     "opsFreq": "130.525",
     "gates": [
       {
-        "gate": "14",
+        "gateNumber": "14",
         "isIntl": false
       },
       {
-        "gate": "15",
+        "gateNumber": "15",
         "isIntl": false
       },
       {
-        "gate": "16",
+        "gateNumber": "16",
         "isIntl": false
       }
     ]
@@ -1554,11 +1554,11 @@
     "opsFreq": "129.025",
     "gates": [
       {
-        "gate": "C30",
+        "gateNumber": "C30",
         "isIntl": false
       },
       {
-        "gate": "E29",
+        "gateNumber": "E29",
         "isIntl": true
       }
     ]
@@ -1569,11 +1569,11 @@
     "opsFreq": "129.600",
     "gates": [
       {
-        "gate": "A16",
+        "gateNumber": "A16",
         "isIntl": false
       },
       {
-        "gate": "A17",
+        "gateNumber": "A17",
         "isIntl": false
       }
     ]
@@ -1584,19 +1584,19 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       },
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       },
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": false
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": false
       }
     ]
@@ -1607,31 +1607,31 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "A2",
+        "gateNumber": "A2",
         "isIntl": false
       },
       {
-        "gate": "A5",
+        "gateNumber": "A5",
         "isIntl": false
       },
       {
-        "gate": "A6",
+        "gateNumber": "A6",
         "isIntl": false
       },
       {
-        "gate": "B1",
+        "gateNumber": "B1",
         "isIntl": false
       },
       {
-        "gate": "B2",
+        "gateNumber": "B2",
         "isIntl": false
       },
       {
-        "gate": "B3",
+        "gateNumber": "B3",
         "isIntl": false
       },
       {
-        "gate": "B4",
+        "gateNumber": "B4",
         "isIntl": false
       }
     ]
@@ -1642,15 +1642,15 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "B1",
+        "gateNumber": "B1",
         "isIntl": false
       },
       {
-        "gate": "B4",
+        "gateNumber": "B4",
         "isIntl": false
       },
       {
-        "gate": "B5",
+        "gateNumber": "B5",
         "isIntl": false
       }
     ]
@@ -1661,11 +1661,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "12",
+        "gateNumber": "12",
         "isIntl": false
       },
       {
-        "gate": "13",
+        "gateNumber": "13",
         "isIntl": false
       }
     ]
@@ -1676,15 +1676,15 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       },
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": false
       },
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       }
     ]
@@ -1695,11 +1695,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": false
       }
     ]
@@ -1710,39 +1710,39 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": false
       },
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       },
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": false
       },
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": false
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       },
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       },
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": false
       },
       {
-        "gate": "9",
+        "gateNumber": "9",
         "isIntl": false
       }
     ]
@@ -1753,79 +1753,79 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "29",
+        "gateNumber": "29",
         "isIntl": false
       },
       {
-        "gate": "30",
+        "gateNumber": "30",
         "isIntl": false
       },
       {
-        "gate": "31",
+        "gateNumber": "31",
         "isIntl": false
       },
       {
-        "gate": "32",
+        "gateNumber": "32",
         "isIntl": false
       },
       {
-        "gate": "33",
+        "gateNumber": "33",
         "isIntl": false
       },
       {
-        "gate": "34",
+        "gateNumber": "34",
         "isIntl": false
       },
       {
-        "gate": "35",
+        "gateNumber": "35",
         "isIntl": false
       },
       {
-        "gate": "36",
+        "gateNumber": "36",
         "isIntl": false
       },
       {
-        "gate": "37",
+        "gateNumber": "37",
         "isIntl": false
       },
       {
-        "gate": "38",
+        "gateNumber": "38",
         "isIntl": false
       },
       {
-        "gate": "39",
+        "gateNumber": "39",
         "isIntl": false
       },
       {
-        "gate": "40",
+        "gateNumber": "40",
         "isIntl": false
       },
       {
-        "gate": "41",
+        "gateNumber": "41",
         "isIntl": false
       },
       {
-        "gate": "42",
+        "gateNumber": "42",
         "isIntl": false
       },
       {
-        "gate": "43",
+        "gateNumber": "43",
         "isIntl": false
       },
       {
-        "gate": "44",
+        "gateNumber": "44",
         "isIntl": false
       },
       {
-        "gate": "45",
+        "gateNumber": "45",
         "isIntl": false
       },
       {
-        "gate": "46",
+        "gateNumber": "46",
         "isIntl": false
       },
       {
-        "gate": "48",
+        "gateNumber": "48",
         "isIntl": false
       }
     ]
@@ -1836,7 +1836,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       }
     ]
@@ -1847,11 +1847,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "142",
+        "gateNumber": "142",
         "isIntl": false
       },
       {
-        "gate": "144",
+        "gateNumber": "144",
         "isIntl": false
       }
     ]
@@ -1862,27 +1862,27 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "A1",
+        "gateNumber": "A1",
         "isIntl": false
       },
       {
-        "gate": "A10",
+        "gateNumber": "A10",
         "isIntl": false
       },
       {
-        "gate": "A2A",
+        "gateNumber": "A2A",
         "isIntl": false
       },
       {
-        "gate": "A2B",
+        "gateNumber": "A2B",
         "isIntl": false
       },
       {
-        "gate": "A4A",
+        "gateNumber": "A4A",
         "isIntl": false
       },
       {
-        "gate": "A4B",
+        "gateNumber": "A4B",
         "isIntl": false
       }
     ]
@@ -1893,11 +1893,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "10",
+        "gateNumber": "10",
         "isIntl": false
       },
       {
-        "gate": "11",
+        "gateNumber": "11",
         "isIntl": false
       }
     ]
@@ -1908,7 +1908,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "A4",
+        "gateNumber": "A4",
         "isIntl": false
       }
     ]
@@ -1919,15 +1919,15 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "22",
+        "gateNumber": "22",
         "isIntl": false
       },
       {
-        "gate": "20A",
+        "gateNumber": "20A",
         "isIntl": false
       },
       {
-        "gate": "21A",
+        "gateNumber": "21A",
         "isIntl": false
       }
     ]
@@ -1938,7 +1938,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": false
       }
     ]
@@ -1949,7 +1949,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       }
     ]
@@ -1960,35 +1960,35 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "31",
+        "gateNumber": "31",
         "isIntl": false
       },
       {
-        "gate": "34",
+        "gateNumber": "34",
         "isIntl": false
       },
       {
-        "gate": "39",
+        "gateNumber": "39",
         "isIntl": false
       },
       {
-        "gate": "45",
+        "gateNumber": "45",
         "isIntl": false
       },
       {
-        "gate": "47",
+        "gateNumber": "47",
         "isIntl": false
       },
       {
-        "gate": "51",
+        "gateNumber": "51",
         "isIntl": false
       },
       {
-        "gate": "54",
+        "gateNumber": "54",
         "isIntl": false
       },
       {
-        "gate": "56",
+        "gateNumber": "56",
         "isIntl": false
       }
     ]
@@ -1999,11 +1999,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       }
     ]
@@ -2014,11 +2014,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "6",
+        "gateNumber": "6",
         "isIntl": false
       },
       {
-        "gate": "7",
+        "gateNumber": "7",
         "isIntl": false
       }
     ]
@@ -2029,15 +2029,15 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "D16",
+        "gateNumber": "D16",
         "isIntl": false
       },
       {
-        "gate": "D17",
+        "gateNumber": "D17",
         "isIntl": false
       },
       {
-        "gate": "D18",
+        "gateNumber": "D18",
         "isIntl": false
       }
     ]
@@ -2048,19 +2048,19 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "10",
+        "gateNumber": "10",
         "isIntl": false
       },
       {
-        "gate": "11",
+        "gateNumber": "11",
         "isIntl": false
       },
       {
-        "gate": "12A",
+        "gateNumber": "12A",
         "isIntl": false
       },
       {
-        "gate": "12B",
+        "gateNumber": "12B",
         "isIntl": false
       }
     ]
@@ -2071,27 +2071,27 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "13",
+        "gateNumber": "13",
         "isIntl": false
       },
       {
-        "gate": "14",
+        "gateNumber": "14",
         "isIntl": false
       },
       {
-        "gate": "16",
+        "gateNumber": "16",
         "isIntl": false
       },
       {
-        "gate": "17",
+        "gateNumber": "17",
         "isIntl": false
       },
       {
-        "gate": "23",
+        "gateNumber": "23",
         "isIntl": false
       },
       {
-        "gate": "24",
+        "gateNumber": "24",
         "isIntl": false
       }
     ]
@@ -2102,7 +2102,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       }
     ]
@@ -2113,7 +2113,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "8",
+        "gateNumber": "8",
         "isIntl": false
       }
     ]
@@ -2124,15 +2124,15 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "1",
+        "gateNumber": "1",
         "isIntl": false
       },
       {
-        "gate": "2",
+        "gateNumber": "2",
         "isIntl": false
       },
       {
-        "gate": "3",
+        "gateNumber": "3",
         "isIntl": false
       }
     ]
@@ -2143,35 +2143,35 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "B2",
+        "gateNumber": "B2",
         "isIntl": false
       },
       {
-        "gate": "B3",
+        "gateNumber": "B3",
         "isIntl": false
       },
       {
-        "gate": "B4",
+        "gateNumber": "B4",
         "isIntl": false
       },
       {
-        "gate": "B6",
+        "gateNumber": "B6",
         "isIntl": false
       },
       {
-        "gate": "B7",
+        "gateNumber": "B7",
         "isIntl": false
       },
       {
-        "gate": "B8",
+        "gateNumber": "B8",
         "isIntl": false
       },
       {
-        "gate": "B9",
+        "gateNumber": "B9",
         "isIntl": false
       },
       {
-        "gate": "C10",
+        "gateNumber": "C10",
         "isIntl": false
       }
     ]
@@ -2182,11 +2182,11 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "4",
+        "gateNumber": "4",
         "isIntl": false
       },
       {
-        "gate": "5",
+        "gateNumber": "5",
         "isIntl": false
       }
     ]
@@ -2197,7 +2197,7 @@
     "opsFreq": null,
     "gates": [
       {
-        "gate": "A4",
+        "gateNumber": "A4",
         "isIntl": false
       }
     ]
