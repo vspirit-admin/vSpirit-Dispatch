@@ -1,5 +1,5 @@
 import { Station } from '../getGate'
-import stationsRaw from './stations.json'
+import stationsRaw from './stations_raw.json'
 
 const stations = stationsRaw as unknown as Station[]
 
