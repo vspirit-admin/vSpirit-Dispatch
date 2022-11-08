@@ -1,13 +1,25 @@
 import 'dotenv/config'
+import { arrivalMessage } from './arrivalMessage'
+import { schedule } from 'node-cron'
 
-if (
-  // !process.env.AVWX_TOKEN ||
-  !process.env.HOPPIE_LOGON ||
-  !process.env.CALLSIGN
-) {
-  throw new Error('Missing environment variables')
+const checkEnv = function(envs: string[]) {
+  for (const env of envs) {
+    if (!process.env[env]) {
+      throw new Error(`Missing environment variable ${env}`);
+    }
+  }
 }
 
-import { cron } from './cron'
-
-cron()
+checkEnv(['CALLSIGN']);
+if (process.env.DEV_MODE == 'false') {
+  checkEnv(['HOPPIE_LOGON']);
+  schedule('* * * * *', () => {
+    void (async () => {
+      await arrivalMessage();
+    })();
+  });
+} else {
+  void (async () => {
+     await arrivalMessage();
+  })();
+}
