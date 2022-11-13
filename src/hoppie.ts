@@ -27,7 +27,7 @@ export const hoppieString = (
   packet: string | undefined = undefined,
   to: string | undefined = undefined
 ) => {
-  const CALLSIGN = process.env.CALLSIGN
+  const CALLSIGN = process.env.DISPATCH_CALLSIGN
   const HOPPIE_LOGON = process.env.HOPPIE_LOGON
 
   if (!CALLSIGN || !HOPPIE_LOGON) {

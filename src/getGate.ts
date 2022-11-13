@@ -1,9 +1,7 @@
 import _ from 'lodash'
-import { Logger } from 'tslog'
+import { log } from './log'
 
 import { arrGatesAssigned } from './caches'
-
-const gateLogger = new Logger({ name: 'gateLogger' })
 
 interface Gate {
   gateNumber: string
@@ -32,7 +30,7 @@ const getGate = (station: Station, international: boolean): Gate | null => {
     .map(({ gateNumber }) => gateNumber)
 
   if (station.gates.length === 0) {
-    gateLogger.warn(`No gate found at ${station.icao}.`)
+    log.warn(`No gate found at ${station.icao}.`)
     return null
   }
 
@@ -67,9 +65,9 @@ const getGate = (station: Station, international: boolean): Gate | null => {
       `${station.icao}/${chosenGate.gateNumber}`.toUpperCase(),
       true
     )
-    gateLogger.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
+    log.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
   } else {
-    gateLogger.info(`No gates found for ${station.icao}.`)
+    log.info(`No gates found for ${station.icao}.`)
   }
 
   return chosenGate ?? null

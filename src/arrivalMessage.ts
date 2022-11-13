@@ -1,11 +1,9 @@
 import axios from 'axios'
-import { Logger } from 'tslog'
+import { log } from './log'
 
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieString, HoppieType } from './hoppie'
 import { arrInfoSentCache } from './caches'
-
-const log = new Logger({ name: 'arrivalMessageLogger' })
 
 const vAmsysMapUri =
   'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d'
@@ -94,10 +92,28 @@ export const arrivalMessage = async () => {
         return;
       }
 
+      const callsign = flight.callsign;
+      /* when testing integration with Hoppie on non prod, ensure that
+       * we are not sending actual messages to flights
+       */
+      if (process.env.NODE_ENV != 'production') {
+        flight.callsign = `${process.env.DISPATCH_CALLSIGN ?? 'NKS'}OUT`;
+        log.debug(callsign, '->', flight.callsign);
+      }
+
       log.info(`Sending arrival info to ${flight.callsign}.`)
       await axios.post(
         hoppieString(HoppieType.telex, arrivalMessage, flight.callsign)
-      )
+      ).then(function (response) {
+        // Hoppie returns a 200 status code even with logon code failures
+        if (response.data == 'error {illegal logon code}') {
+          throw new Error('HOPPIE_LOGON is invalid.');
+        }
+
+        if (response.data == 'ok') {
+          log.info(`Sending arrival info for ${flight.callsign} succeeded.`);
+        }
+      });
     })
   )
 }
