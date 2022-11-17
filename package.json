@@ -9,7 +9,12 @@
     "build": "tsc",
     "start": "node .",
     "lint": "eslint .",
-    "update": "npm-check -u"
+    "update": "npm-check -u",
+
+    "deploy.production": "flyctl deploy -c ./fly/fly.production.toml",
+    "deploy.prod": "npm run deploy.production",
+    "deploy.staging": "flyctl deploy -c ./fly/fly.staging.toml",
+    "deploy.stage": "npm run deploy.staging"
   },
   "author": "GoldenXLence",
   "maintainers": [

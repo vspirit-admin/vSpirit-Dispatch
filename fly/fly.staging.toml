@@ -1,0 +1,28 @@
+app = "vspirit-dispatch-staging"
+kill_signal = "SIGTERM"
+kill_timeout = 5
+processes = []
+
+[env]
+  NODE_ENV="staging"
+  DISPATCH_CALLSIGN="NKS"
+  DEV_MODE="false"
+  LOG_LEVEL="debug"
+  FOOTER="\n[STGE] AUTOMATED SERVICE\nPROVIDED BY VSPIRIT.IO"
+
+[build]
+  dockerfile="./Dockerfile"
+
+[deploy]
+  strategy="rolling"
+
+#[[services]]
+#  http_checks = []
+#  internal_port = 8080
+#  processes = ["app"]
+#  protocol = "tcp"
+#  script_checks = []
+#  [services.concurrency]
+#    hard_limit = 25
+#    soft_limit = 20
+#    type = "connections"

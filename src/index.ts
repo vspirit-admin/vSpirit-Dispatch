@@ -11,8 +11,8 @@ const checkEnv = function(envs: string[]) {
   }
 }
 
+log.info('NODE_ENV', process.env.NODE_ENV);
 for (const env of [
-  'NODE_ENV',
   'DEV_MODE',
   'LOG_LEVEL',
   'DISPATCH_CALLSIGN',
