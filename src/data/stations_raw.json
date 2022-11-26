@@ -66,11 +66,11 @@
     "opsFreq": "129.050",
     "gates": [
       {
-        "gateNumber": "3",
+        "gateNumber": "2",
         "isIntl": false
       },
       {
-        "gateNumber": "4",
+        "gateNumber": "3",
         "isIntl": false
       },
       {
@@ -79,6 +79,10 @@
       },
       {
         "gateNumber": "6",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "7",
         "isIntl": false
       },
       {
@@ -131,6 +135,10 @@
     "gates": [
       {
         "gateNumber": "B19",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "B21",
         "isIntl": false
       }
     ]
@@ -1408,6 +1416,10 @@
     "opsFreq": "129.850",
     "gates": [
       {
+        "gateNumber": "B4",
+        "isIntl": false
+      },
+      {
         "gateNumber": "B9",
         "isIntl": false
       },
@@ -1457,6 +1469,16 @@
         "isIntl": false
       }
     ]
+  },  {
+    "icao": "KROC",
+    "isAcars": true,
+    "opsFreq": "131.100",
+    "gates": [
+      {
+        "gateNumber": "A5",
+        "isIntl": false
+      }
+    ]
   },
   {
     "icao": "KSAN",
@@ -1473,6 +1495,17 @@
       }
     ]
   },
+    {
+    "icao": "KSAT",
+    "isAcars": true,
+    "opsFreq": "130.900",
+    "gates": [
+      {
+        "gateNumber": "A15",
+        "isIntl": false
+      }
+    ]
+  },
   {
     "icao": "KSDF",
     "isAcars": true,
@@ -1480,6 +1513,14 @@
     "gates": [
       {
         "gateNumber": "A6",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "A8",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "A12",
         "isIntl": false
       }
     ]
@@ -1502,18 +1543,6 @@
     "gates": [
       {
         "gateNumber": "B15",
-        "isIntl": false
-      },
-      {
-        "gateNumber": "B22",
-        "isIntl": false
-      },
-      {
-        "gateNumber": "C7",
-        "isIntl": false
-      },
-      {
-        "gateNumber": "C9",
         "isIntl": false
       }
     ]
@@ -1556,10 +1585,6 @@
       {
         "gateNumber": "C30",
         "isIntl": false
-      },
-      {
-        "gateNumber": "E29",
-        "isIntl": true
       }
     ]
   },
@@ -1690,6 +1715,17 @@
     ]
   },
   {
+    "icao": "MHPR",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "6",
+        "isIntl": false
+      }
+    ]
+  },
+  {
     "icao": "MKJP",
     "isAcars": true,
     "opsFreq": null,
@@ -1743,6 +1779,78 @@
       },
       {
         "gateNumber": "9",
+        "isIntl": false
+      }
+    ]
+  },  {
+    "icao": "MMMY",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "3",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "4",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MMPR",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "5",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "6",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "7",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "10",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "11",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "12",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MMSD",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "3A",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "11",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "13",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "16",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "17",
         "isIntl": false
       }
     ]
@@ -1898,6 +2006,17 @@
       },
       {
         "gateNumber": "11",
+        "isIntl": false
+      }
+    ]
+  },
+  {
+    "icao": "MTCH",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "E1",
         "isIntl": false
       }
     ]
@@ -2133,6 +2252,21 @@
       },
       {
         "gateNumber": "3",
+        "isIntl": false
+      }
+    ]
+  },
+    {
+    "icao": "TJPS",
+    "isAcars": true,
+    "opsFreq": null,
+    "gates": [
+      {
+        "gateNumber": "1",
+        "isIntl": false
+      },
+      {
+        "gateNumber": "2",
         "isIntl": false
       }
     ]
