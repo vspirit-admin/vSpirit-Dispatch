@@ -10,7 +10,6 @@
     "start": "node .",
     "lint": "eslint .",
     "update": "npm-check -u",
-
     "deploy.production": "flyctl deploy -c ./fly/fly.production.toml",
     "deploy.prod": "npm run deploy.production",
     "deploy.staging": "flyctl deploy -c ./fly/fly.staging.toml",
@@ -29,14 +28,16 @@
     "node": "^16.15"
   },
   "dependencies": {
-    "@isaacs/ttlcache": "^1.2.0",
+    "@types/redis": "^4.0.11",
     "axios": "^0.27.2",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "lodash": "^4.17.21",
     "node-cron": "^3.0.2",
+    "node-filter-async": "^2.0.0",
     "qs": "^6.11.0",
+    "redis": "^4.5.0",
     "tslog": "^3.3.4",
     "uuid": "^8.3.2"
   },

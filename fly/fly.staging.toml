@@ -8,6 +8,8 @@ processes = []
   DISPATCH_CALLSIGN="NKS"
   DEV_MODE="false"
   LOG_LEVEL="debug"
+  REDIS_HOST="fly-vspirit-admin.upstash.io"
+  REDIS_PORT="6379"
   FOOTER="\n[STGE] AUTOMATED SERVICE\nPROVIDED BY VSPIRIT.IO"
 
 [build]

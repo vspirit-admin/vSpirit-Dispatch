@@ -6,14 +6,14 @@ import getGate from './getGate'
  *
  * @param flightInfo
  */
-const getArrivalInfo = (flightInfo: {
+const getArrivalInfo = async (flightInfo: {
   arr: string
   dep: string
   callsign: string
-}): string => {
+}): Promise<string> => {
   const station = findStationByIcao(flightInfo.arr)
   const isIntl = !flightInfo.dep.startsWith(flightInfo.arr[0])
-  const gate = station ? getGate(station, isIntl) : null
+  const gate = station ? await getGate(station, isIntl) : null
 
   const callsignFormatted = flightInfo.callsign.replace(/\D/g, '')
 
