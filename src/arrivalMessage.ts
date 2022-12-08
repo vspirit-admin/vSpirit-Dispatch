@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { log } from './log'
 
+import filterAsync from 'node-filter-async'
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieString, HoppieType } from './hoppie'
-import { arrInfoSentCache } from './caches'
+import { nksTTLCache } from './cache/caches'
+import { VaKey } from './types'
 
 const vAmsysMapUri =
   'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d'
@@ -54,34 +56,38 @@ const flightShouldReceiveMessage = ({ currentLocation }: VaFlightInfo) =>
   currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
 
 // Auto send arrival info per vAMSYS info
-export const arrivalMessage = async () => {
-  // TODO: replace with scheduler that supports async such as Bree
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
-  log.info('Checking for arrival aircraft on vAMSYS...')
+export const arrivalMessage = async (vaKey?: VaKey) => {
+  vaKey = vaKey ?? 'NKS';
+  log.info(`Checking for arrival aircraft on vAMSYS for VA ${vaKey}...`)
   const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
-  const flightsToReceiveMessage = data.filter(
-    (flight) =>
-      flightShouldReceiveMessage(flight) &&
-      !arrInfoSentCache.get(flight.callsign)
-  )
+  const flightsToReceiveMessage = await filterAsync(data, async (flight) => {
+    const isCached = await nksTTLCache.getArrivalInfo(flight.callsign);
+    log.debug(`Flight ${flight.callsign} isCached:`, !!isCached);
+    return flightShouldReceiveMessage(flight) && !isCached;
+  });
+
 
   log.info(
     `${data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
   )
 
+  let shouldCacheFlights = true;
   if (process.env.DEV_MODE == 'true'
     && flightsToReceiveMessage.length === 0
     && data.length > 0)
   {
     log.debug('No eligible flights for debugging - adding all flights to test.');
     flightsToReceiveMessage.push(...data);
+    shouldCacheFlights = false;
   }
 
 
   return Promise.all(
     flightsToReceiveMessage.map(async (flight) => {
-      arrInfoSentCache.set(flight.callsign, true)
-      const arrivalMessage = getArrivalInfo({
+      if (shouldCacheFlights) {
+        await nksTTLCache.setArrivalInfo(flight.callsign, 'true');
+      }
+      const arrivalMessage = await getArrivalInfo({
         arr: flight.arrival.icao,
         dep: flight.departure.icao,
         callsign: flight.callsign,

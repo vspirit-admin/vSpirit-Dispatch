@@ -1,7 +1,8 @@
 import _ from 'lodash'
+import filterAsync from 'node-filter-async'
 import { log } from './log'
 
-import { arrGatesAssigned } from './caches'
+import { nksTTLCache } from './cache/caches'
 
 interface Gate {
   gateNumber: string
@@ -22,12 +23,12 @@ export interface Station {
  * @param international Whether the flight is international and not domestic
  * @returns Gate object or null if not found
  */
-const getGate = (station: Station, international: boolean): Gate | null => {
-  const gateNumbersAlreadyAssigned = station.gates
-    .filter(({ gateNumber }) =>
-      arrGatesAssigned.get(`${station.icao}/${gateNumber}`.toUpperCase())
-    )
-    .map(({ gateNumber }) => gateNumber)
+const getGate = async (station: Station, international: boolean): Promise<Gate | null> => {
+  const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }) => {
+    const gateCacheString = `${station.icao}:${gateNumber}`.toUpperCase()
+    const isCached = await nksTTLCache.getGetAssigned(gateCacheString);
+    return !!isCached;
+  })).map(({ gateNumber }) => gateNumber);
 
   if (station.gates.length === 0) {
     log.warn(`No gate found at ${station.icao}.`)
@@ -61,10 +62,9 @@ const getGate = (station: Station, international: boolean): Gate | null => {
     possibleGates[Math.floor(Math.random() * possibleGates.length)] as Gate | undefined
 
   if (chosenGate) {
-    arrGatesAssigned.set(
-      `${station.icao}/${chosenGate.gateNumber}`.toUpperCase(),
-      true
-    )
+    const gateCacheString = `${station.icao}:${chosenGate.gateNumber}`.toUpperCase()
+    await nksTTLCache.setGateAssigned(gateCacheString, 'true');
+
     log.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
   } else {
     log.info(`No gates found for ${station.icao}.`)

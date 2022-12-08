@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+
+  dispatch:
+    build: .
+    volumes:
+      - .:/app
+    command: npm run dev
+
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"

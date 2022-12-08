@@ -15,9 +15,17 @@ be set to check for flights at the top of every minute.
 
 ### Commands
 
+#### Local Environment
 1. `npm run dev` - Runs the auto-restarting dev server with `nodemon`
 2. `npm run build` - Runs the TS compiler (`tsc`)
 3. `npm run start` - Runs compiled JS code with Node.
+
+#### Docker
+You can use docker to boot up an environment that runs the dispatch server in development mode along with a Redis
+container.
+
+Run `docker compose up` to launch. For more information see the
+[Docker Compose documentation](https://docs.docker.com/compose/).
 
 ## Deployments
 
