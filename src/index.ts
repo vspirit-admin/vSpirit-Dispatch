@@ -16,21 +16,27 @@ log.info('NODE_ENV', process.env.NODE_ENV);
 for (const env of [
   'DEV_MODE',
   'LOG_LEVEL',
-  'DISPATCH_CALLSIGN',
+  'NKS_DISPATCH_CALLSIGN',
+  'AAL_DISPATCH_CALLSIGN'
 ]) {
   log.debug(env, process.env[env]);
 };
+const runArrivalMessage = () =>
+  Promise.all([
+    arrivalMessage('NKS'),
+    arrivalMessage('AAL')
+  ]);
 
-checkEnv(['DISPATCH_CALLSIGN']);
+
 if (process.env.DEV_MODE == 'false') {
   checkEnv(['HOPPIE_LOGON']);
   log.info('Starting scheduler');
   schedule('* * * * *', () => {
-    void arrivalMessage();
+    void runArrivalMessage()
   });
 } else {
   log.info('DEV_MODE is on - running once')
-  void arrivalMessage().finally(() => {
+  runArrivalMessage().finally(() => {
     void redisClient.quit();
   });
 }

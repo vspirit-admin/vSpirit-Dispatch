@@ -19,25 +19,26 @@ interface HoppieMessage {
  * https://www.hoppie.nl/acars/system/tech.html
  *
  * @param type By default 'poll', otherwise one of HoppieType.
- * @param packet Leave undefined for no packet/message, otherwise any string. Any special characters will be encoded.
+ * @param from Emitter of the request
  * @param to Destination of the request, or self if not given.
+ * @param packet Leave undefined for no packet/message, otherwise any string. Any special characters will be encoded.
  */
 export const hoppieString = (
   type = HoppieType.poll,
-  packet: string | undefined = undefined,
-  to: string | undefined = undefined
+  from: string,
+  to?: string,
+  packet?: string
 ) => {
-  const CALLSIGN = process.env.DISPATCH_CALLSIGN
   const HOPPIE_LOGON = process.env.HOPPIE_LOGON
 
-  if (!CALLSIGN || !HOPPIE_LOGON) {
-    throw new Error('CALLSIGN or HOPPIE_LOGON environment vars not set.')
+  if (!HOPPIE_LOGON) {
+    throw new Error('HOPPIE_LOGON environment var not set.')
   }
 
   const query = qs.stringify({
     logon: HOPPIE_LOGON,
-    from: CALLSIGN,
-    to: to ?? CALLSIGN,
+    from,
+    to: to ?? from,
     type,
     packet,
   })
