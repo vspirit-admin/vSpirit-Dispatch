@@ -11,3 +11,4 @@ export const findStationByIcao = (icao: string, vaKeyParam?: VaKey) => {
   return stations[vaKey].find((station: Station) => station.icao === icao)
 }
 
+export { Gateabase, stations };

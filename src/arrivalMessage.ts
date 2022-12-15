@@ -35,6 +35,7 @@ interface VaFlightInfo {
     longitude: string
     groundspeed: number
     distance_remaining: number
+    time_remaining: string
     distance_flown: number
     departure_time: string
     estimated_arrival_time: string
@@ -53,9 +54,18 @@ interface VaFlightInfo {
   }
 }
 
-const flightShouldReceiveMessage = ({ currentLocation }: VaFlightInfo) =>
-  currentLocation.distance_remaining <= 225 &&
+const flightShouldReceiveMessage = ({
+  currentLocation,
+  arrival
+}: VaFlightInfo, vaKey: VaKey) => {
+
+  if (vaKey == 'AAL' && !['KBUF', 'KORD' ].includes(arrival.icao)) {
+    return false;
+  }
+
+  return currentLocation.distance_remaining <= 225 &&
   currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
+}
 
 // Auto send arrival info per vAMSYS info
 export const arrivalMessage = async (vaKeyParam?: VaKey) => {
@@ -70,7 +80,7 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
   }
 
   const flightsToReceiveMessage = await filterAsync(data, async (flight) => {
-    if (flightShouldReceiveMessage(flight)) {
+    if (flightShouldReceiveMessage(flight, vaKey)) {
       const isCached = await ttlCaches[vaKey].getArrivalInfo(flight.callsign);
       log.debug(`Flight ${flight.callsign} isCached:`, !!isCached);
       return !isCached;
@@ -86,6 +96,7 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
 
   let shouldCacheFlights = true;
   if (process.env.DEV_MODE == 'true'
+    && vaKey == 'NKS'
     && flightsToReceiveMessage.length === 0
     && data.length > 0)
   {
