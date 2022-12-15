@@ -4,11 +4,13 @@ import { log } from './log'
 import filterAsync from 'node-filter-async'
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieString, HoppieType } from './hoppie'
-import { nksTTLCache } from './cache/caches'
+import { ttlCaches } from './cache/caches'
 import { VaKey } from './types'
 
-const vAmsysMapUri =
-  'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d'
+const vAmsysMapUris = {
+  'NKS': 'https://vamsys.io/statistics/map/e084cd47-e432-4fcd-a8c3-7cbf86358c9d',
+  'AAL': 'https://vamsys.io/statistics/map/4f89c7e1-2d90-42e2-b449-90781bed2d17'
+}
 
 interface VaAirportInfo {
   name: string
@@ -33,6 +35,7 @@ interface VaFlightInfo {
     longitude: string
     groundspeed: number
     distance_remaining: number
+    time_remaining: string
     distance_flown: number
     departure_time: string
     estimated_arrival_time: string
@@ -51,28 +54,49 @@ interface VaFlightInfo {
   }
 }
 
-const flightShouldReceiveMessage = ({ currentLocation }: VaFlightInfo) =>
-  currentLocation.distance_remaining <= 225 &&
+const flightShouldReceiveMessage = ({
+  currentLocation,
+  arrival
+}: VaFlightInfo, vaKey: VaKey) => {
+
+  if (vaKey == 'AAL' && !['KBUF', 'KORD' ].includes(arrival.icao)) {
+    return false;
+  }
+
+  return currentLocation.distance_remaining <= 225 &&
   currentLocation.groundspeed >= 250 // To prevent early gate assignments for short flights.
+}
 
 // Auto send arrival info per vAMSYS info
-export const arrivalMessage = async (vaKey?: VaKey) => {
-  vaKey = vaKey ?? 'NKS';
+export const arrivalMessage = async (vaKeyParam?: VaKey) => {
+  const vaKey = vaKeyParam ?? 'NKS' as VaKey;
   log.info(`Checking for arrival aircraft on vAMSYS for VA ${vaKey}...`)
-  const data = (await axios.get(vAmsysMapUri)).data as VaFlightInfo[]
+
+  let data: VaFlightInfo[];
+  try {
+    data = (await axios.get(vAmsysMapUris[vaKey])).data as VaFlightInfo[];
+  } catch (e) {
+    return;
+  }
+
   const flightsToReceiveMessage = await filterAsync(data, async (flight) => {
-    const isCached = await nksTTLCache.getArrivalInfo(flight.callsign);
-    log.debug(`Flight ${flight.callsign} isCached:`, !!isCached);
-    return flightShouldReceiveMessage(flight) && !isCached;
+    if (flightShouldReceiveMessage(flight, vaKey)) {
+      const isCached = await ttlCaches[vaKey].getArrivalInfo(flight.callsign);
+      log.debug(`Flight ${flight.callsign} isCached:`, !!isCached);
+      return !isCached;
+    }
+
+    return false;
   });
 
 
   log.info(
-    `${data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
+    `${vaKey}: ${data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
   )
 
   let shouldCacheFlights = true;
   if (process.env.DEV_MODE == 'true'
+    && vaKey == 'NKS'
     && flightsToReceiveMessage.length === 0
     && data.length > 0)
   {
@@ -81,35 +105,36 @@ export const arrivalMessage = async (vaKey?: VaKey) => {
     shouldCacheFlights = false;
   }
 
-
   return Promise.all(
     flightsToReceiveMessage.map(async (flight) => {
       if (shouldCacheFlights) {
-        await nksTTLCache.setArrivalInfo(flight.callsign, 'true');
+        await ttlCaches[vaKey].setArrivalInfo(flight.callsign, 'true');
       }
       const arrivalMessage = await getArrivalInfo({
         arr: flight.arrival.icao,
         dep: flight.departure.icao,
         callsign: flight.callsign,
-      })
+      }, vaKey)
 
       if (process.env.DEV_MODE?.toLowerCase() === 'true') {
         log.debug(`Generated message:\n${arrivalMessage}`);
         return;
       }
 
+      const dispatchCallsign = process.env[`${vaKey}_DISPATCH_CALLSIGN`] as unknown as string;
       const callsign = flight.callsign;
+
       /* when testing integration with Hoppie on non prod, ensure that
        * we are not sending actual messages to flights
        */
       if (process.env.NODE_ENV != 'production') {
-        flight.callsign = `${process.env.DISPATCH_CALLSIGN ?? 'NKS'}OUT`;
+        flight.callsign = `${dispatchCallsign}OUT`;
         log.debug(callsign, '->', flight.callsign);
       }
 
       log.info(`Sending arrival info to ${flight.callsign}.`)
       await axios.post(
-        hoppieString(HoppieType.telex, arrivalMessage, flight.callsign)
+        hoppieString(HoppieType.telex, dispatchCallsign, flight.callsign, arrivalMessage)
       ).then(function (response) {
         // Hoppie returns a 200 status code even with logon code failures
         if (response.data == 'error {illegal logon code}') {

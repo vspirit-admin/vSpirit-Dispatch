@@ -1,4 +1,4 @@
-type VaKey = 'NKS';
+type VaKey = 'NKS' | 'AAL';
 
 export {
   VaKey

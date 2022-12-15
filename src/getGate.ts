@@ -2,7 +2,8 @@ import _ from 'lodash'
 import filterAsync from 'node-filter-async'
 import { log } from './log'
 
-import { nksTTLCache } from './cache/caches'
+import { ttlCaches } from './cache/caches'
+import { VaKey } from './types'
 
 interface Gate {
   gateNumber: string
@@ -21,12 +22,18 @@ export interface Station {
  *
  * @param station Station to choose a gate from
  * @param international Whether the flight is international and not domestic
+ * @param vaKeyParam
  * @returns Gate object or null if not found
  */
-const getGate = async (station: Station, international: boolean): Promise<Gate | null> => {
+const getGate = async (
+  station: Station,
+  international: boolean,
+  vaKeyParam: VaKey
+): Promise<Gate | null> => {
+  const vaKey = vaKeyParam;
   const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }) => {
     const gateCacheString = `${station.icao}:${gateNumber}`.toUpperCase()
-    const isCached = await nksTTLCache.getGetAssigned(gateCacheString);
+    const isCached = await ttlCaches[vaKey].getGetAssigned(gateCacheString);
     return !!isCached;
   })).map(({ gateNumber }) => gateNumber);
 
@@ -63,7 +70,7 @@ const getGate = async (station: Station, international: boolean): Promise<Gate |
 
   if (chosenGate) {
     const gateCacheString = `${station.icao}:${chosenGate.gateNumber}`.toUpperCase()
-    await nksTTLCache.setGateAssigned(gateCacheString, 'true');
+    await ttlCaches[vaKey].setGateAssigned(gateCacheString, 'true');
 
     log.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
   } else {

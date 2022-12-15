@@ -9,7 +9,7 @@ const redisClient = createClient({
     port: parseInt(process.env.REDIS_PORT ?? '6379')
   }
 });
-redisClient.on('error', (err) => { throw err; } );
+redisClient.on('error', (err) => log.error('Redis error:', err));
 redisClient.on('connect', () => log.debug('Connected to redis.'));
 
 void (async () => {
