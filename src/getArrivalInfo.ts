@@ -1,22 +1,34 @@
 import { findStationByIcao } from './data/stations'
-import getGate from './getGate'
+import getGate, { Station } from './getGate'
+import { log } from './log'
+import { GateRepository } from './repositories/GateRepository'
 import { VaKey } from './types'
 
+interface FlightInfo {
+  arr: string
+  dep: string
+  callsign: string,
+  type: string,
+}
 /**
  * Generates an arrival message string from the given flight info.
  *
  * @param flightInfo
  * @param vaKeyParam
  */
-const getArrivalInfo = async (flightInfo: {
-  arr: string
-  dep: string
-  callsign: string,
-},
-                              vaKeyParam?: VaKey
+const getArrivalInfo = async (
+  flightInfo: FlightInfo,
+  vaKeyParam?: VaKey
 ): Promise<string> => {
   const vaKey = vaKeyParam ?? 'NKS';
-  const station = findStationByIcao(flightInfo.arr, vaKey)
+
+  let station: Station | null | undefined
+  if (vaKey == 'NKS') {
+    station = findStationByIcao(flightInfo.arr, vaKey)
+  } else {
+    station = await getStationByIcaoAndType(vaKey, flightInfo.arr, flightInfo.type);
+  }
+
   const isIntl = !flightInfo.dep.startsWith(flightInfo.arr[0])
   const gate = station ? await getGate(station, isIntl, vaKey) : null
 
@@ -27,8 +39,6 @@ const getArrivalInfo = async (flightInfo: {
     `GATE ASSIGNMENT FOR`,
     `FLIGHT ${callsignFormatted}`,
     `ARRIVING ${flightInfo.arr} IS ${gate?.gateNumber ?? 'UNKNOWN'}`,
-    //`GROUND POWER: ${gate ? 'YES' : 'UNKNOWN'}`,
-    //`GROUND AIR: ${gate ? 'YES' : 'UNKNOWN'}`,
     `GROUND POWER: YES`,
     `GROUND AIR: YES`,
     `OPS FREQ: ${station?.opsFreq ?? 'NONE'}`,
@@ -44,4 +54,23 @@ const getArrivalInfo = async (flightInfo: {
   return arrivalInfo.join('\n').toUpperCase()
 }
 
-export default getArrivalInfo
+const getStationByIcaoAndType = async (vaKey: VaKey, icao: string, type: string): Promise<Station | undefined> => {
+  const gates = await GateRepository.findByIcaoAndType(vaKey, icao, type);
+
+  if(gates.length == 0) return;
+
+  return {
+    icao: icao,
+    acars: true,
+    opsFreq: gates[0].frequency.frequency,
+    gates: gates.map((gate) => {
+      return {
+        gateNumber: gate.gate,
+        isIntl: gate.isIntl
+      }
+    })
+  } as Station;
+
+}
+
+export default getArrivalInfo;

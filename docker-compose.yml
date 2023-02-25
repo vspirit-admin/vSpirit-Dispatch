@@ -6,6 +6,7 @@ services:
     volumes:
       - .:/app
     command: npm run dev
+    #command: tail -f /dev/null
 
 
   redis:

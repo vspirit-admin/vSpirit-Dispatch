@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { aalPilots } from './config'
 import { log } from './log'
 
 import filterAsync from 'node-filter-async'
@@ -56,11 +57,18 @@ interface VaFlightInfo {
 
 const flightShouldReceiveMessage = ({
   currentLocation,
-  arrival
+  callsign,
+  pilot
 }: VaFlightInfo, vaKey: VaKey) => {
 
-  if (vaKey == 'AAL' && !['KBUF', 'KORD' ].includes(arrival.icao)) {
+  if (vaKey == 'AAL' && !aalPilots.includes(pilot.username)) {
+    if (process.env.DEV_MODE?.toLowerCase() === 'true') {
+      log.debug(`Would have dropped message for pilot ${pilot.username} on flight ${callsign}`);
+      return true;
+    }
+    log.debug(`Dropping message for ${pilot.username}`);
     return false;
+
   }
 
   return currentLocation.distance_remaining <= 225 &&
@@ -96,12 +104,13 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
 
   let shouldCacheFlights = true;
   if (process.env.DEV_MODE == 'true'
-    && vaKey == 'NKS'
+    && vaKey == 'AAL'
     && flightsToReceiveMessage.length === 0
     && data.length > 0)
   {
     log.debug('No eligible flights for debugging - adding all flights to test.');
     flightsToReceiveMessage.push(...data);
+    log.debug('Not caching sent flight info');
     shouldCacheFlights = false;
   }
 
@@ -114,6 +123,7 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
         arr: flight.arrival.icao,
         dep: flight.departure.icao,
         callsign: flight.callsign,
+        type: flight.aircraft.code
       }, vaKey)
 
       if (process.env.DEV_MODE?.toLowerCase() === 'true') {

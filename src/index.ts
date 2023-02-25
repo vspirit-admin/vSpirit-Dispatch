@@ -1,8 +1,10 @@
-import 'dotenv/config'
+require('./config')
 import { redisClient } from './cache/caches'
+import { GateabaseDataSource } from './db'
 import { log } from './log'
 import { arrivalMessage } from './arrivalMessage'
 import { schedule } from 'node-cron'
+import 'reflect-metadata'
 
 const checkEnv = function(envs: string[]) {
   for (const env of envs) {
@@ -27,6 +29,7 @@ const runArrivalMessage = () =>
     arrivalMessage('AAL')
   ]);
 
+void GateabaseDataSource.initialize();
 
 if (process.env.DEV_MODE == 'false') {
   checkEnv(['HOPPIE_LOGON']);
