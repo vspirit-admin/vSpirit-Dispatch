@@ -66,7 +66,7 @@ const flightShouldReceiveMessage = ({
       log.debug(`Would have dropped message for pilot ${pilot.username} on flight ${callsign}`);
       return true;
     }
-    log.info(`Dropping message for ${pilot.username}`);
+    log.info(`Dropping message for ${pilot.username} on flight ${callsign}`);
     return false;
 
   }
