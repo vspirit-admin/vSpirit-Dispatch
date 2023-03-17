@@ -61,14 +61,22 @@ const flightShouldReceiveMessage = ({
   pilot
 }: VaFlightInfo, vaKey: VaKey) => {
 
-  if (vaKey == 'AAL' && !aalPilots.includes(pilot.username)) {
-    if (process.env.DEV_MODE?.toLowerCase() === 'true') {
-      log.debug(`Would have dropped message for pilot ${pilot.username} on flight ${callsign}`);
-      return true;
-    }
-    log.info(`Dropping message for ${pilot.username} on flight ${callsign}`);
-    return false;
+  if (vaKey == 'AAL') {
 
+    if (['ROA', 'TWA', 'PSA'].includes(callsign.substring(0, 3))) {
+      log.info(`Dropping message for ${pilot.username} on flight ${callsign}`);
+      return false;
+    }
+
+    if (!aalPilots.includes(pilot.username)) {
+      if (process.env.DEV_MODE?.toLowerCase() === 'true') {
+        log.debug(`Would have dropped message for pilot ${pilot.username} on flight ${callsign}`);
+        return true;
+      }
+
+      log.info(`Dropping message for ${pilot.username} on flight ${callsign}`);
+      return false;
+    }
   }
 
   return currentLocation.distance_remaining <= 225 &&
