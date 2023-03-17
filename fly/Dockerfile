@@ -25,6 +25,7 @@ COPY --from=builder /root/.volta /root/.volta
 RUN mkdir /app
 COPY --from=builder /app/package*.json /app
 COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/database /app/database
 
 WORKDIR /app
 ENV PATH /root/.volta/bin:$PATH
