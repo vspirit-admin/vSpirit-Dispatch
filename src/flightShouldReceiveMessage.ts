@@ -17,7 +17,7 @@ export const flightShouldReceiveMessage = (
   vaKey: VaKey
 ) => {
   if (vaKey == 'AAL') {
-    if (!aalPilots.includes(pilot.username)) {
+    if (aalPilots.length && !aalPilots.includes(pilot.username)) {
       if (process.env.DEV_MODE?.toLowerCase() === 'true') {
         log.debug(
           `Would have dropped message for pilot ${pilot.username} on flight ${callsign}`
