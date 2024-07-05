@@ -11,9 +11,10 @@ processes = []
   LOG_LEVEL="debug"
   REDIS_HOST="fly-vspirit-admin.upstash.io"
   REDIS_PORT="6379"
+  PMDG_B77W_PAD=25
   NKS_FOOTER="\nAUTOMATED SERVICE\nPROVIDED BY VSPIRIT.IO\n[STGE]"
   AAL_FOOTER="\nAUTOMATED SERVICE\nPROVIDED BY\nVIRTUAL-AAL.COM\n[STGE]"
-  AAL_PILOTS="AAL0002"
+  #AAL_PILOTS="AAL0002"
 
 [build]
   dockerfile="./Dockerfile"

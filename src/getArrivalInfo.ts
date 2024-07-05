@@ -48,7 +48,13 @@ const getArrivalInfo = async (
 
   const footerKey = `${vaKey}_FOOTER`;
   if (process.env[footerKey]) {
-    arrivalInfo.push(process.env[footerKey] as unknown as string)
+    arrivalInfo.push(...(process.env[footerKey] as unknown as string).split("\n"))
+  }
+
+  // The PMDG B77W doesn't currently support newlines in Hoppie messages. Use padding instead.
+  if (flightInfo.type == 'B77W') {
+    const paddedArrivalInfo = arrivalInfo.map((s: string) => s.padEnd(parseInt(process.env.PMDG_B77W_PAD as string), ' '));
+    return paddedArrivalInfo.join('').toUpperCase();
   }
 
   return arrivalInfo.join('\n').toUpperCase()

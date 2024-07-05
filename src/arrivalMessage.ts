@@ -128,15 +128,17 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
       }
 
       log.info(`Sending arrival info to ${flight.callsign}.`)
+      const url = hoppieString(
+        HoppieType.telex,
+        dispatchCallsign,
+        flight.callsign,
+        arrivalMessage
+      );
+
+      //log.debug(url);
+
       await axios
-        .post(
-          hoppieString(
-            HoppieType.telex,
-            dispatchCallsign,
-            flight.callsign,
-            arrivalMessage
-          )
-        )
+        .post(url)
         .then(function (response) {
           // Hoppie returns a 200 status code even with logon code failures
           if (response.data == 'error {illegal logon code}') {
