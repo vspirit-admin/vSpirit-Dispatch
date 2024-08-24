@@ -1,5 +1,7 @@
 import { VaKey } from '../types'
 import { redisClient, RedisClientType } from './redis'
+import TTLCache from './ttlcache';
+import { log } from '../log';
 
 const ms = (hours: number) => Math.floor(hours * 60 * 60 * 1000)
 
@@ -22,25 +24,47 @@ class RedisTTLCache {
   }
 
   private get(key: string) {
-    return this.client.get(this.wrapKey(key));
+    const wrappedKey = this.wrapKey(key);
+
+    let v = TTLCache.get(wrappedKey);
+    if (v !== undefined) {
+      log.debug(`${wrappedKey}:TTLCache`);
+      return v;
+    }
+
+    // if the server was restarted, but Redis still has the key
+    // then recache the value in the TTLCache
+    v = this.client.get(wrappedKey) as RedisTTLCacheValueType | undefined;
+    if (v !== undefined) {
+      TTLCache.set(wrappedKey, v);
+    }
+    log.debug(`${wrappedKey}:Redis`);
+    return v;
   }
 
-  private async set(key: string, value: RedisTTLCacheValueType) {
+  private async set(key: string, value: RedisTTLCacheValueType, ttl?: number) {
+    if (ttl === undefined) {
+      ttl = ms(1);
+    }
     if (typeof value == 'object') {
       value = JSON.stringify(value);
     }
 
-    await this.client.set(this.wrapKey(key), value, {
-      PX: ms(1)
-    })
+    const wrappedKey = this.wrapKey(key);
+
+    await this.client.set(wrappedKey, value, {
+      PX: ttl
+    });
+
+    TTLCache.set(wrappedKey, value, { ttl });
   }
 
   private wrapArrivalInfoKey(key: string): string {
     return `arrivalInfo:${key}`;
   }
 
-  async getArrivalInfo(key: string) {
-    return await this.get(this.wrapArrivalInfoKey(key));
+  getArrivalInfo(key: string) {
+    return this.get(this.wrapArrivalInfoKey(key));
   }
 
   setArrivalInfo(key: string, value: RedisTTLCacheValueType) {

@@ -31,16 +31,17 @@ const getGate = async (
   vaKeyParam: VaKey
 ): Promise<Gate | null> => {
   const vaKey = vaKeyParam;
+
+  if (station.gates.length === 0) {
+    log.warn(`No gate found at ${station.icao}.`);
+    return null;
+  }
+
   const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }) => {
     const gateCacheString = `${station.icao}:${gateNumber}`.toUpperCase()
     const isCached = await ttlCaches[vaKey].getGetAssigned(gateCacheString);
     return !!isCached;
   })).map(({ gateNumber }) => gateNumber);
-
-  if (station.gates.length === 0) {
-    log.warn(`No gate found at ${station.icao}.`)
-    return null
-  }
 
   const possibleGatesByInternational = station.gates.filter(
     (gate) => gate.isIntl === international
