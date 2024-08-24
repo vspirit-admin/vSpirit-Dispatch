@@ -26,7 +26,7 @@ export const flightShouldReceiveMessage = (
       }
 
       log.debug(
-        `Whitelist: Dropping message for ${pilot.username} on flight ${callsign}`
+        `Allowlist: Dropping message for ${pilot.username} on flight ${callsign}`
       )
       return false
     }

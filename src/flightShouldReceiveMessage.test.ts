@@ -61,18 +61,18 @@ describe('callsign exclusions', () => {
   })
 })
 
-describe('whitelist', () => {
-  const whitelistedPilot = 'AAL0002'
-  beforeAll(() => aalPilots.push(whitelistedPilot))
+describe('allowlist', () => {
+  const allowlistedPilot = 'AAL0002'
+  beforeAll(() => aalPilots.push(allowlistedPilot))
   afterAll(() => aalPilots.pop())
 
-  test('it should exclude pilots not on the whitelist', () => {
+  test('it should exclude pilots not on the allowlist', () => {
     expect(flightShouldReceiveMessage(baseFlightInfo, 'AAL')).toBeFalsy()
   })
 
-  test('it should include pilots on the whitelist', () => {
+  test('it should include pilots on the allowlist', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.pilot = { username: whitelistedPilot }
+    flightInfo.pilot = { username: allowlistedPilot }
     expect(flightShouldReceiveMessage(baseFlightInfo, 'AAL')).toBeFalsy()
   })
 })
