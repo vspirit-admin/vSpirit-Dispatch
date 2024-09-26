@@ -24,5 +24,5 @@ export class Gate {
   @JoinColumn({
     name: 'airport_frequency_id'
   })
-  frequency: AirportFrequency
+  frequency?: AirportFrequency
 }

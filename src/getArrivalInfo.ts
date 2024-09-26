@@ -63,7 +63,7 @@ const getArrivalInfo = async (
 const getStationByIcaoAndType = async (vaKey: VaKey, icao: string, type: string): Promise<Station | undefined> => {
   const gates = await GateRepository.findByIcaoAndType(vaKey, icao, type);
 
-  if(gates.length == 0) return;
+  if(gates.length == 0 || !gates[0].frequency) return;
 
   return {
     icao: icao,

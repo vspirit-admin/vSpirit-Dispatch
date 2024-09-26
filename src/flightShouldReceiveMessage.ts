@@ -1,43 +1,45 @@
-import { VaFlightInfo } from './arrivalMessage'
+import VaFlightInfo from './interfaces/VaFlightInfo'
 import { aalPilots } from './config'
 import { log } from './log'
 import { VaKey } from './types'
 
 export const flightShouldReceiveMessage = (
-  {
-    currentLocation: { distance_remaining, groundspeed },
-    callsign,
-    pilot,
-  }: Pick<VaFlightInfo, 'callsign' | 'pilot'> & {
-    currentLocation: Pick<
-      VaFlightInfo['currentLocation'],
-      'distance_remaining' | 'groundspeed'
-    >
-  },
+  flight: VaFlightInfo,
   vaKey: VaKey
 ) => {
   if (vaKey == 'AAL') {
-    if (aalPilots.length && !aalPilots.includes(pilot.username)) {
+    const username = flight.pilot.username;
+    const callsign = flight.booking.callsign;
+    if (aalPilots.length && !aalPilots.includes(username)) {
       if (process.env.DEV_MODE?.toLowerCase() === 'true') {
         log.debug(
-          `Would have dropped message for pilot ${pilot.username} on flight ${callsign}`
+          `Would have dropped message for pilot ${username} on flight ${callsign}`
         )
         return true
       }
 
       log.debug(
-        `Allowlist: Dropping message for ${pilot.username} on flight ${callsign}`
+        `Allowlist: Dropping message for ${username} on flight ${callsign}`
       )
       return false
     }
 
     if (['ROA', 'TWA', 'PSA'].includes(callsign.substring(0, 3))) {
       log.debug(
-        `Non AAL: Dropping message for ${pilot.username} on flight ${callsign}`
+        `Non AAL: Dropping message for ${username} on flight ${callsign}`
       )
       return false
     }
   }
 
-  return distance_remaining <= 225 && groundspeed >= 250 // To prevent early gate assignments for short flights.
+  const distanceRemaining = flight.progress.distanceRemaining;
+  const groundSpeed = flight.progress.groundSpeed;
+
+  log.debug(`dist: ${distanceRemaining}, gs: ${groundSpeed}`);
+
+  const flightShouldReceiveMessage = distanceRemaining <= 225 && groundSpeed >= 250;
+  log.debug(`${flight.booking.callsign} should receive message: `, flightShouldReceiveMessage);
+
+
+  return flightShouldReceiveMessage;
 }

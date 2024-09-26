@@ -23,22 +23,23 @@ class RedisTTLCache {
     return `${env}:${this.vaKey}:${key}`;
   }
 
-  private get(key: string) {
+  private async get(key: string) {
     const wrappedKey = this.wrapKey(key);
 
     let v = TTLCache.get(wrappedKey);
     if (v !== undefined) {
-      log.debug(`${wrappedKey}:TTLCache`);
+      log.debug(`get ${wrappedKey}:TTLCache`);
       return v;
     }
 
     // if the server was restarted, but Redis still has the key
     // then recache the value in the TTLCache
-    v = this.client.get(wrappedKey) as RedisTTLCacheValueType | undefined;
+    v = await this.client.get(wrappedKey) as RedisTTLCacheValueType | undefined;
     if (v !== undefined) {
+      log.debug(`set ${wrappedKey}:TTLCache`, v);
       TTLCache.set(wrappedKey, v);
     }
-    log.debug(`${wrappedKey}:Redis`);
+    log.debug(`get ${wrappedKey}:Redis`, v);
     return v;
   }
 
