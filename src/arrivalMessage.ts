@@ -31,6 +31,9 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
     return
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (response?.data?.flights === undefined) return;
+
   const flightsToReceiveMessage = await filterAsync(
     Object.values(response.data.flights),
     async (flight: VaFlightInfo) => {
