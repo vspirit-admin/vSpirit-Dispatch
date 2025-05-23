@@ -24,6 +24,10 @@ processes = []
 [deploy]
   strategy="rolling"
 
+[[restart]]
+  policy = "always"
+  retries = 10
+
 #[[services]]
 #  http_checks = []
 #  internal_port = 8080
