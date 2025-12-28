@@ -8,9 +8,10 @@ import { flightShouldReceiveMessage } from './flightShouldReceiveMessage'
 import getArrivalInfo from './getArrivalInfo'
 import { hoppieString, HoppieType } from './hoppie'
 import { ttlCaches } from './cache/caches'
+import { getAccessToken } from './oauth/token'
 import { VaKey } from './types'
 
-const vAmsysActiveFlightsUri = 'https://vamsys.io/api/token/v1/discord/airline/active-flights'
+const vAmsysActiveFlightsUri = 'https://vamsys.io/api/v3/operations/flight-map'
 
 // Auto send arrival info per vAMSYS info
 export const arrivalMessage = async (vaKeyParam?: VaKey) => {
@@ -19,8 +20,9 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
 
   let response: VaFlightResponse;
   try {
-    const VAMSYS_TOKEN: string = process.env['VAMSYS_TOKEN_' + vaKey] ?? ''
-    response = (await axios.post(vAmsysActiveFlightsUri, {}, {
+    const VAMSYS_TOKEN = await getAccessToken(vaKey)
+
+    response = (await axios.get(vAmsysActiveFlightsUri, {
       headers: {
         Authorization: `Bearer ${VAMSYS_TOKEN}`
       }
@@ -31,24 +33,21 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
     return
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (response?.data?.flights === undefined) return;
-
   const flightsToReceiveMessage = await filterAsync(
-    Object.values(response.data.flights),
+    Object.values(response.data),
     async (flight: VaFlightInfo) => {
-    if (flightShouldReceiveMessage(flight, vaKey)) {
-      const isCached = !!await ttlCaches[vaKey].getArrivalInfo(flight.booking.callsign);
-      log.debug(`Flight ${flight.booking.callsign} isCached: `, isCached);
-      return !isCached;
+      if (flightShouldReceiveMessage(flight, vaKey)) {
+        const isCached = !!await ttlCaches[vaKey].getArrivalInfo(flight.booking.callsign);
+        log.debug(`Flight ${flight.booking.callsign} isCached: `, isCached);
+        return !isCached;
+      }
+
+      return false;
     }
-
-    return false;
-
-  });
+  );
 
   log.info(
-    `${vaKey}: ${response.data.total} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
+    `${vaKey}: ${response.data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
   )
 
   let shouldCacheFlights = true;
@@ -56,11 +55,11 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
     process.env.DEV_MODE == 'true' &&
     //vaKey == 'AAL' &&
     flightsToReceiveMessage.length === 0 &&
-    response.data.total > 0
+    response.data.length > 0
   ) {
     log.debug('No eligible flights for debugging - adding all flights to test.')
 
-    flightsToReceiveMessage.push(...Object.values(response.data.flights) as VaFlightInfo[]);
+    flightsToReceiveMessage.push(...Object.values(response.data));
     log.debug('Not caching sent flight info')
     shouldCacheFlights = false;
   }

@@ -39,7 +39,7 @@ const getGate = async (
 
   const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }) => {
     const gateCacheString = `${station.icao}:${gateNumber}`.toUpperCase()
-    const isCached = await ttlCaches[vaKey].getGetAssigned(gateCacheString);
+    const isCached = await ttlCaches[vaKey].getGateAssigned(gateCacheString);
     return !!isCached;
   })).map(({ gateNumber }) => gateNumber);
 
@@ -73,7 +73,7 @@ const getGate = async (
     const gateCacheString = `${station.icao}:${chosenGate.gateNumber}`.toUpperCase()
     await ttlCaches[vaKey].setGateAssigned(gateCacheString, 'true');
 
-    log.info(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
+    log.debug(`Assigning gate ${chosenGate.gateNumber} at ${station.icao}.`)
   } else {
     log.info(`No gates found for ${station.icao}.`)
   }

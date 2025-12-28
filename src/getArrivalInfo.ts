@@ -32,6 +32,8 @@ const getArrivalInfo = async (
   const isIntl = !flightInfo.dep.startsWith(flightInfo.arr[0])
   const gate = station ? await getGate(station, isIntl, vaKey) : null
 
+  log.info(`Generating arrival info for ${flightInfo.callsign} - gate ${gate?.gateNumber ?? 'UNKNOWN'} at ${flightInfo.arr}`)
+
   const callsignFormatted = flightInfo.callsign.replace(/\D/g, '')
 
   const arrivalInfo = [
