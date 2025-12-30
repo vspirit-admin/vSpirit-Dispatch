@@ -1,8 +1,8 @@
-import VaAircraftInfo from './VaAircraftInfo'
-import VaAirportInfo from './VaAirportInfo'
-import VaBookingInfo from './VaBookingInfo'
-import VaFlightProgress from './VaFlightProgress'
-import VaPilotInfo from './VaPilotInfo'
+import type VaAircraftInfo from './VaAircraftInfo.ts'
+import type VaAirportInfo from './VaAirportInfo.ts'
+import type VaBookingInfo from './VaBookingInfo.ts'
+import type VaFlightProgress from './VaFlightProgress.ts'
+import type VaPilotInfo from './VaPilotInfo.ts'
 
 export default interface VaFlightInfo {
   bookingId: number,

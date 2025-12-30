@@ -1,7 +1,7 @@
-import { GateabaseDataSource } from '../db'
-import { Gate } from '../entities'
-import { Airport } from '../entities/Airport'
-import { VaKey } from '../types'
+import { GateabaseDataSource } from '../db.js'
+import { Gate } from '../entities/Gate.js'
+import { Airport } from '../entities/Airport.js'
+import type { VaKey } from '../types.js'
 
 export const GateRepository = GateabaseDataSource.getRepository(Gate).extend({
   findByIcaoAndType(vaKey: VaKey, icao: string, type: string) {

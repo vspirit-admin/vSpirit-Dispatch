@@ -1,4 +1,4 @@
-import gates from '../data/gates'
+import gates from '../data/gates.js'
 
 process.argv
   .slice(2)

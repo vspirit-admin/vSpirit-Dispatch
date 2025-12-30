@@ -1,7 +1,7 @@
-import TTLCache from './ttlcache';
-import { RedisClientType } from './redis'
-import { log } from '../log'
-import { VaKey } from '../types'
+import TTLCache from './ttlcache.js';
+import type { RedisClientType } from './redis.js'
+import { log } from '../log.js'
+import type { VaKey } from '../types.js'
 
 const ms = (hours: number) => Math.floor(hours * 60 * 60 * 1000)
 

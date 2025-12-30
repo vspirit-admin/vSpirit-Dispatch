@@ -1,4 +1,4 @@
-import { Logger, TLogLevelName } from 'tslog'
+import { Logger, type TLogLevelName } from 'tslog'
 
 let min_level = process.env.LOG_LEVEL
 if (!min_level) {

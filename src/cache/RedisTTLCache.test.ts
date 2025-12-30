@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { RedisTTLCache } from './RedisTTLCache';
-import TTLCache from './ttlcache';
-import { redisClient } from './redis';
+import { jest, describe, it, expect, beforeEach } from '@jest/globals';
 
-// Mock the modules
-jest.mock('./ttlcache', () => ({
-  get: jest.fn(),
-  set: jest.fn(),
+jest.unstable_mockModule('./ttlcache.js', () => ({
+  default: {
+    get: jest.fn(),
+    set: jest.fn(),
+  },
 }));
 
-jest.mock('./redis', () => ({
+jest.unstable_mockModule('./redis.js', () => ({
   redisClient: {
     get: jest.fn(),
     set: jest.fn(),
@@ -18,17 +17,23 @@ jest.mock('./redis', () => ({
   },
 }));
 
+const { RedisTTLCache } = await import('./RedisTTLCache.js');
+import type { RedisTTLCache as RedisTTLCacheType } from './RedisTTLCache.js';
+const { default: TTLCache } = await import('./ttlcache.js');
+const { redisClient } = await import('./redis.js');
+
+
 describe('RedisTTLCache', () => {
-  let cache: RedisTTLCache;
+  let cache: RedisTTLCacheType; // Use the Instance type here
   const vaKey = 'NKS';
   const env = 'test';
 
   beforeEach(() => {
     process.env.NODE_ENV = env;
     jest.clearAllMocks();
-    
-    // We pass the mocked redisClient to the constructor
-    cache = new RedisTTLCache(redisClient, vaKey);
+
+    // RedisTTLCache (from the dynamic import) is the constructor
+    cache = new RedisTTLCache(redisClient as any, vaKey);
   });
 
   describe('getArrivalInfo', () => {
@@ -51,13 +56,14 @@ describe('RedisTTLCache', () => {
       const redisValue = 'redis_value';
 
       (TTLCache.get as jest.Mock).mockReturnValue(undefined);
-      (redisClient.get as jest.Mock).mockResolvedValue(redisValue);
+      // Cast to any or a specific MockedFunction to satisfy the strict ESM types
+      (redisClient.get as jest.MockedFunction<any>).mockResolvedValue(redisValue);
 
       const result = await cache.getArrivalInfo(key);
 
       expect(result).toBe(redisValue);
       expect(TTLCache.get).toHaveBeenCalledWith(wrappedKey);
-      expect(TTLCache.get).toReturnWith(undefined)
+      expect(TTLCache.get).toHaveReturnedWith(undefined)
       expect(redisClient.get).toHaveBeenCalledWith(wrappedKey);
       expect(TTLCache.set).toHaveBeenCalledWith(wrappedKey, redisValue);
     });

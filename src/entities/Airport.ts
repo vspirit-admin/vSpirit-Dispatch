@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { AirportFrequency } from './AirportFrequency'
+import { AirportFrequency } from './AirportFrequency.js'
 
 @Entity('airports')
 export class Airport {

@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
-import { AirportFrequency } from './AirportFrequency'
+import { AirportFrequency } from './AirportFrequency.js'
 
 @Entity('gates')
 export class Gate {

@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import filterAsync from 'node-filter-async'
-import { log } from './log'
+import { log } from './log.js'
 
-import { ttlCaches } from './cache/caches'
-import { VaKey } from './types'
+import { ttlCaches } from './cache/caches.js'
+import type { VaKey } from './types.ts'
 
 interface Gate {
   gateNumber: string
@@ -37,11 +37,11 @@ const getGate = async (
     return null;
   }
 
-  const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }) => {
+  const gateNumbersAlreadyAssigned = (await filterAsync(station.gates, async ({ gateNumber }: { gateNumber: string }) => {
     const gateCacheString = `${station.icao}:${gateNumber}`.toUpperCase()
     const isCached = await ttlCaches[vaKey].getGateAssigned(gateCacheString);
     return !!isCached;
-  })).map(({ gateNumber }) => gateNumber);
+  })).map(({ gateNumber }: { gateNumber: string }) => gateNumber);
 
   const possibleGatesByInternational = station.gates.filter(
     (gate) => gate.isIntl === international

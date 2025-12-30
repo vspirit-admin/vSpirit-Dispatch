@@ -1,6 +1,6 @@
-import { Station } from '../getGate'
-import { VaKey } from '../types'
-import stationsRaw from './stations_raw.json'
+import type { Station } from '../getGate.ts'
+import type { VaKey } from '../types.ts'
+import stationsRaw from './stations_raw.json' with { type: 'json'}
 
 type Gateabase = Record<string, Station[]>;
 const stations = stationsRaw as unknown as Gateabase;
@@ -11,4 +11,4 @@ export const findStationByIcao = (icao: string, vaKeyParam?: VaKey) => {
   return stations[vaKey].find((station: Station) => station.icao === icao)
 }
 
-export { Gateabase, stations };
+export { type Gateabase, stations };

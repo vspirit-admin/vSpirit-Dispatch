@@ -1,8 +1,9 @@
-import { findStationByIcao } from './data/stations'
-import getGate, { Station } from './getGate'
-import { log } from './log'
-import { GateRepository } from './repositories/GateRepository'
-import { VaKey } from './types'
+import { findStationByIcao } from './data/stations.js'
+import { Gate } from './entities/index.js'
+import getGate, { type Station } from './getGate.js'
+import { log } from './log.js'
+import { GateRepository } from './repositories/GateRepository.js'
+import type { VaKey } from './types.ts'
 
 interface FlightInfo {
   arr: string
@@ -71,7 +72,7 @@ const getStationByIcaoAndType = async (vaKey: VaKey, icao: string, type: string)
     icao: icao,
     acars: true,
     opsFreq: gates[0].frequency.frequency,
-    gates: gates.map((gate) => {
+    gates: gates.map((gate: Gate) => {
       return {
         gateNumber: gate.gate,
         isIntl: gate.isIntl

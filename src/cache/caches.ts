@@ -1,5 +1,5 @@
-import { redisClient } from './redis'
-import { RedisTTLCache } from './RedisTTLCache'
+import { redisClient } from './redis.js'
+import { RedisTTLCache } from './RedisTTLCache.js'
 
 const nksTTLCache = new RedisTTLCache(redisClient, 'NKS');
 const aalTTLCache = new RedisTTLCache(redisClient, 'AAL');

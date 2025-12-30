@@ -1,23 +1,32 @@
-import { cloneDeep } from 'lodash'
-import { aalPilots } from './config'
-import { flightShouldReceiveMessage } from './flightShouldReceiveMessage'
+import _ from 'lodash'
+import { aalPilots } from './config.js'
+import { flightShouldReceiveMessage } from './flightShouldReceiveMessage.js'
+import type VaFlightInfo from './interfaces/VaFlightInfo.ts'
+import { log } from './log.js'
+
+const { cloneDeep } = _;
+
+log.info(process.env.NODE_ENV);
 
 const baseFlightInfo = {
-  currentLocation: {
-    groundspeed: 400,
-    distance_remaining: 200,
-  },
-  callsign: 'AAL999',
+  progress: {
+    groundSpeed: 400,
+    distanceRemaining: 200,
+  } satisfies Partial<VaFlightInfo['progress']>,
   pilot: {
     username: 'AAL0001',
-  },
-}
+  } satisfies Partial<VaFlightInfo['pilot']>,
+  booking: {
+    callsign: 'AAL999',
+  } satisfies Partial<VaFlightInfo['booking']>
+} as VaFlightInfo
 
+/*
 test.skip('skip', () => {
   return;
 });
+*/
 
-/*
 beforeAll(() => {
   // ensure that environmental variables do not conflict with tests.
   aalPilots.length = 0
@@ -31,13 +40,13 @@ test('it should receive message', () => {
 describe('distance', () => {
   test('it should receive message for exactly 225 distance', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.currentLocation.distance_remaining = 225
+    flightInfo.progress.distanceRemaining = 225
     expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeTruthy()
   })
 
   test('it should not receive message over 225 distance', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.currentLocation.distance_remaining = 226
+    flightInfo.progress.distanceRemaining = 226
     expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeFalsy()
   })
 })
@@ -45,13 +54,13 @@ describe('distance', () => {
 describe('groundspeed', () => {
   test('it should receive message over 250 groundspeed', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.currentLocation.groundspeed = 250
+    flightInfo.progress.groundSpeed = 250
     expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeTruthy()
   })
 
   test('it should not receive message below 250 groundspeed', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.currentLocation.groundspeed = 249
+    flightInfo.progress.groundSpeed = 249
     expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeFalsy()
   })
 })
@@ -60,7 +69,7 @@ describe('callsign exclusions', () => {
   ;['ROA', 'TWA', 'PSA'].map((callsign) => {
     test(`it should not send for ${callsign}`, () => {
       const flightInfo = cloneDeep(baseFlightInfo)
-      flightInfo.callsign = `${callsign}999`
+      flightInfo.booking.callsign = `${callsign}999`
       expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeFalsy()
     })
   })
@@ -77,8 +86,7 @@ describe('allowlist', () => {
 
   test('it should include pilots on the allowlist', () => {
     const flightInfo = cloneDeep(baseFlightInfo)
-    flightInfo.pilot = { username: allowlistedPilot }
-    expect(flightShouldReceiveMessage(baseFlightInfo, 'AAL')).toBeFalsy()
+    flightInfo.pilot.username = allowlistedPilot
+    expect(flightShouldReceiveMessage(flightInfo, 'AAL')).toBeTruthy()
   })
 })
-*/

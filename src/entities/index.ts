@@ -1,3 +1,3 @@
-export { Aircraft } from './Aircraft'
-export { AircraftCategory } from './AircraftCategory'
-export { Gate } from './Gate'
+export { Aircraft } from './Aircraft.js'
+export { AircraftCategory } from './AircraftCategory.js'
+export { Gate } from './Gate.js'

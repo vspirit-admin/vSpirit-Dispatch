@@ -1,8 +1,8 @@
-require('./config')
-import { redisClient } from './cache/caches'
-import { GateabaseDataSource } from './db'
-import { log } from './log'
-import { arrivalMessage } from './arrivalMessage'
+import './config.js'
+import { redisClient } from './cache/redis.js'
+import { GateabaseDataSource } from './db.js'
+import { log } from './log.js'
+import { arrivalMessage } from './arrivalMessage.js'
 import { schedule } from 'node-cron'
 import 'reflect-metadata'
 

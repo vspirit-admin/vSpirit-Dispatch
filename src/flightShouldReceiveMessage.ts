@@ -1,7 +1,7 @@
-import VaFlightInfo from './interfaces/VaFlightInfo'
-import { aalPilots } from './config'
-import { log } from './log'
-import { VaKey } from './types'
+import type VaFlightInfo from './interfaces/VaFlightInfo.ts'
+import { aalPilots } from './config.js'
+import { log } from './log.js'
+import { type VaKey } from './types.js'
 
 export const flightShouldReceiveMessage = (
   flight: VaFlightInfo,

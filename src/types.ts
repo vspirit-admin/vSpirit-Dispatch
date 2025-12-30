@@ -1,5 +1,5 @@
 type VaKey = 'NKS' | 'AAL';
 
 export {
-  VaKey
+  type VaKey
 };
