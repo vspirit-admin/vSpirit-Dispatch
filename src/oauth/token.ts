@@ -18,7 +18,10 @@ export async function getAccessToken(vaKey: VaKey): Promise<string> {
     },
     auth: {
       tokenHost: 'https://vamsys.io/oauth/token',
-    }
+    },
+    options: {
+      authorizationMethod: 'body',
+    },
   })
 
   try {
@@ -30,7 +33,26 @@ export async function getAccessToken(vaKey: VaKey): Promise<string> {
       return token
     }
   } catch (e) {
-    log.error(e)
+    const clientIdSet = !!process.env[`CLIENT_ID_${vaKey}`]
+    const clientSecretSet = !!process.env[`CLIENT_SECRET_${vaKey}`]
+    const errDetails: Record<string, unknown> = {
+      vaKey,
+      clientIdSet,
+
+      clientSecretSet,
+    }
+
+    if (e instanceof Error) {
+      errDetails.message = e.message
+      // simple-oauth2 attaches HTTP details to the error object
+      const oauthErr = e as Error & { output?: { statusCode?: number; payload?: unknown } }
+      if (oauthErr.output) {
+        errDetails.statusCode = oauthErr.output.statusCode
+        errDetails.responseBody = oauthErr.output.payload
+      }
+    }
+
+    log.error(errDetails, `OAuth token request failed for ${vaKey}`)
   }
 
   return '';
