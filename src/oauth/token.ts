@@ -7,7 +7,7 @@ export async function getAccessToken(vaKey: VaKey): Promise<string> {
   const cache = ttlCaches[vaKey]
   const accessToken = await cache.getVamsysToken() as string
   if (accessToken) {
-    log.info(`Using cached OAuth token for ${vaKey}`)
+    log.debug(`Using cached OAuth token for ${vaKey}`)
     return accessToken;
   }
 

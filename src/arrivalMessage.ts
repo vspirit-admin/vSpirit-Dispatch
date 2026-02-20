@@ -16,7 +16,7 @@ const vAmsysActiveFlightsUri = 'https://vamsys.io/api/v3/operations/flight-map'
 // Auto send arrival info per vAMSYS info
 export const arrivalMessage = async (vaKeyParam?: VaKey) => {
   const vaKey = vaKeyParam ?? ('NKS' as VaKey)
-  log.info(`Checking for arrival aircraft on vAMSYS for VA ${vaKey}...`)
+  log.debug(`Checking for arrival aircraft on vAMSYS for VA ${vaKey}...`)
 
   let response: VaFlightResponse;
   try {
@@ -46,7 +46,7 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
     }
   );
 
-  log.info(
+  log.debug(
     `${vaKey}: ${response.data.length} flights found, ${flightsToReceiveMessage.length} eligible arriving flights found.`
   )
 
@@ -117,7 +117,7 @@ export const arrivalMessage = async (vaKeyParam?: VaKey) => {
           }
 
           if (response.data == 'ok') {
-            log.info(`Sending arrival info for ${flight.booking.callsign} succeeded.`)
+            log.debug(`Sending arrival info for ${flight.booking.callsign} succeeded.`)
           }
         })
     })
